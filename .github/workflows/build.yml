@@ -1,0 +1,57 @@
+name: Zpracovat fotky a přegenerovat web
+
+# Spouští se po každé změně obsahu — typicky po tom, co Jakub něco uloží
+# v administraci. Zpracuje nahrané fotky a přegeneruje HTML z data/*.yml.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'img/upload/**'
+      - 'scripts/**'
+      - 'package.json'
+  workflow_dispatch:
+
+# Aby se dva běhy nepraly o stejný commit, když Jakub uloží dvě věci rychle po sobě.
+concurrency:
+  group: obsah-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Commit od robota nesmí spustit další běh, jinak by to jelo dokola.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Instalace závislostí
+        run: npm ci
+
+      - name: Zpracovat nahrané fotky
+        run: npm run obrazky
+
+      - name: Přegenerovat HTML a sitemapu
+        run: npm run build
+
+      - name: Uložit změny zpět do repozitáře
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          if git diff --quiet; then
+            echo 'Nic se nezměnilo, není co commitovat.'
+            exit 0
+          fi
+
+          git add -A
+          git commit -m 'Zpracování fotek a přegenerování webu [skip ci]'
+          git push

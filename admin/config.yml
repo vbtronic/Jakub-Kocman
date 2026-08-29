@@ -1,0 +1,94 @@
+# Nastavení administrace obsahu (Decap CMS).
+#
+# POZOR: než tohle začne fungovat, doplň <ID-WEBU> níže.
+# ID dostaneš na decapbridge.com po založení webu (Sites → tvůj web → Setup).
+
+backend:
+  name: git-gateway
+  repo: vbtronic/Jakub-Kocman
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/<ID-WEBU>
+  gateway_url: https://gateway.decapbridge.com
+  commit_messages:
+    update: 'Úprava: {{collection}} ({{author-name}})'
+    uploadMedia: 'Nahrána fotka {{path}} ({{author-name}})'
+    deleteMedia: 'Smazána fotka {{path}} ({{author-name}})'
+
+locale: cs
+publish_mode: simple
+
+# Fotky se nahrávají sem; GitHub Action je pak převede na webp,
+# vyrobí náhled a přesune do img/g/ a img/t/.
+media_folder: img/upload
+public_folder: /img/upload
+
+site_url: https://vbtronic.github.io/Jakub-Kocman/
+display_url: https://vbtronic.github.io/Jakub-Kocman/
+logo_url: https://vbtronic.github.io/Jakub-Kocman/img/apple-touch-icon.png
+
+collections:
+  - name: obsah
+    label: Obsah webu
+    files:
+      - name: galerie
+        label: Fotogalerie
+        file: data/galerie.yml
+        description: >-
+          Fotky realizací. Přetažením změníš pořadí — první fotka je na webu
+          vlevo nahoře. Prvních šest se ukazuje i na úvodní stránce.
+        fields:
+          - name: fotky
+            label: Fotky
+            label_singular: Fotka
+            widget: list
+            summary: '{{fields.popis}}'
+            fields:
+              - name: soubor
+                label: Fotka
+                widget: image
+                hint: Nahraj fotku rovnou z mobilu, zmenší se sama.
+              - name: nahled
+                label: Náhled
+                widget: hidden
+                required: false
+                default: ''
+              - name: popis
+                label: Popisek
+                widget: string
+                required: false
+                hint: >-
+                  Co je na fotce, např. „Nový rozvaděč rodinného domu, Štětí“.
+                  Pomáhá to ve vyhledávačích. Když necháš prázdné, doplní se
+                  obecný popis.
+
+      - name: sluzby
+        label: Služby a ceník
+        file: data/sluzby.yml
+        description: Kartičky služeb na úvodní stránce.
+        fields:
+          - name: sluzby
+            label: Služby
+            label_singular: Služba
+            widget: list
+            summary: '{{fields.nadpis}} — {{fields.cena}}'
+            fields:
+              - { name: nadpis, label: Název služby, widget: string }
+              - { name: popis, label: Popis, widget: text }
+              - name: cena
+                label: Cena
+                widget: string
+                default: Cena dle rozsahu
+                hint: 'Např. „Cena dle rozsahu“ nebo „od 450 Kč/hod“.'
+              - name: ikona
+                label: Ikona
+                widget: select
+                default: blesk
+                options:
+                  - { label: Dům, value: dum }
+                  - { label: Klíč / oprava, value: klic }
+                  - { label: Rozvaděč, value: rozvadec }
+                  - { label: Žárovka / osvětlení, value: zarovka }
+                  - { label: Výstraha / závada, value: vystraha }
+                  - { label: Blesk, value: blesk }
+                  - { label: Kolo / auto, value: kolo }
+                  - { label: Zásuvka, value: zasuvka }

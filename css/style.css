@@ -314,3 +314,9 @@ footer a:hover{color:var(--green-500)}
   font-size:14px;font-weight:500;background:#fff;border:1px solid var(--line);
   padding:7px 15px;border-radius:999px;
 }
+.lb-cap{
+  position:absolute;bottom:56px;left:50%;transform:translateX(-50%);
+  max-width:min(760px,86vw);text-align:center;color:#fff;font-size:15px;line-height:1.5;
+  background:rgba(0,0,0,.45);padding:9px 18px;border-radius:10px;
+}
+@media(max-width:600px){ .lb-cap{font-size:14px;bottom:52px} }

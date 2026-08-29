@@ -1,0 +1,16 @@
+{
+  "name": "km-elektro-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web Jakub Kocman – KM-Elektro. Statické stránky generované z data/*.yml.",
+  "type": "module",
+  "scripts": {
+    "obrazky": "node scripts/obrazky.mjs",
+    "build": "node scripts/build.mjs",
+    "vse": "npm run obrazky && npm run build"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "sharp": "^0.33.5"
+  }
+}

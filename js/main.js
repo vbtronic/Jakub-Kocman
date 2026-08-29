@@ -11,13 +11,20 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') toggle(false
 
 // lightbox
 const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'),
-      lbCount = document.getElementById('lbCount');
+      lbCount = document.getElementById('lbCount'), lbCap = document.getElementById('lbCap');
 let shots = [], idx = 0;
 const show = i => {
   idx = (i + shots.length) % shots.length;
   const shot = shots[idx];
+  const popis = shot.dataset.popis || shot.querySelector('img')?.alt || '';
   lbImg.src = shot.dataset.full;
-  lbImg.alt = shot.querySelector('img')?.alt || '';
+  lbImg.alt = popis;
+  // popisek ukazujeme, jen když ho Jakub opravdu vyplnil
+  if (lbCap) {
+    const vlastni = shot.dataset.popis && !/^Realizace elektroinstalace č\. \d+ –/.test(shot.dataset.popis);
+    lbCap.textContent = vlastni ? shot.dataset.popis : '';
+    lbCap.hidden = !vlastni;
+  }
   lbCount.textContent = `${idx + 1} / ${shots.length}`;
 };
 document.addEventListener('click', e => {
