@@ -41,11 +41,11 @@ display_url: https://vbtronic.github.io/Jakub-Kocman/
 logo_url: https://vbtronic.github.io/Jakub-Kocman/img/apple-touch-icon.png
 
 collections:
-  - name: obsah
-    label: Obsah webu
+  - name: galerie
+    label: Fotogalerie
     files:
-      - name: galerie
-        label: Fotogalerie
+      - name: fotky
+        label: Fotky na webu
         file: data/galerie.yml
         description: >-
           Fotky realizací. Přetažením změníš pořadí — první fotka je na webu
@@ -75,10 +75,13 @@ collections:
                   Pomáhá to ve vyhledávačích. Když necháš prázdné, doplní se
                   obecný popis.
 
-      - name: sluzby
-        label: Služby a ceník
+  - name: sluzby
+    label: Služby a ceník
+    files:
+      - name: seznam
+        label: Kartičky služeb
         file: data/sluzby.yml
-        description: Kartičky služeb na úvodní stránce.
+        description: Služby a ceny na úvodní stránce.
         fields:
           - name: sluzby
             label: Služby
