@@ -133,11 +133,9 @@ body.nav-open .nav li:nth-child(5){transition-delay:.26s}
   border-radius:20px;padding:8px;
 }
 .portrait{
-  aspect-ratio:4/5;border-radius:14px;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 35%,rgba(255,255,255,.16),rgba(255,255,255,.04) 70%);
-  display:flex;align-items:flex-end;justify-content:center;
+  aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06);
 }
-.portrait img{width:100%;height:100%;object-fit:contain;object-position:bottom}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .hero-facts{display:flex;gap:0;margin-top:44px;border-top:1px solid rgba(255,255,255,.18);padding-top:26px;position:relative;z-index:1}
 .hero-facts div{flex:1}
 .hero-facts strong{display:block;font-size:26px;font-weight:800}
@@ -346,7 +344,7 @@ footer a:hover{color:var(--green-500)}
         <p style="font-size:14px;color:rgba(255,255,255,.62);margin-top:16px">Nejlépe mě zastihnete e-mailem — odpovím obvykle do 24 hodin.</p>
       </div>
       <div class="hero-card">
-        <div class="portrait"><img src="img/jakub.webp" alt="Jakub Kocman – elektroinstalace" width="828" height="918"></div>
+        <div class="portrait"><img src="img/jakub.webp" alt="Jakub Kocman – elektroinstalace"></div>
       </div>
     </div>
     <div class="hero-facts">
