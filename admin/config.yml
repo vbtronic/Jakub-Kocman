@@ -1,18 +1,32 @@
 # Nastavení administrace obsahu (Decap CMS).
-#
-# POZOR: než tohle začne fungovat, doplň <ID-WEBU> níže.
-# ID dostaneš na decapbridge.com po založení webu (Sites → tvůj web → Setup).
+# Přihlašování zajišťuje DecapBridge — uživatelé nepotřebují účet na GitHubu.
 
 backend:
   name: git-gateway
   repo: vbtronic/Jakub-Kocman
   branch: main
-  identity_url: https://auth.decapbridge.com/sites/<ID-WEBU>
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/75797948-8adf-46ea-8d46-7a4d9ce22bb3/pkce
+  auth_token_endpoint: /sites/75797948-8adf-46ea-8d46-7a4d9ce22bb3/token
   gateway_url: https://gateway.decapbridge.com
+
+  # V DecapBridge je zapnuté "Hide commit author", takže autorem commitu je
+  # účet tokenu. Kdo změnu udělal, zůstává jen tady ve zprávě — a schválně
+  # jen jménem: {{author-login}} je e-mail a repozitář je veřejný.
   commit_messages:
-    update: 'Úprava: {{collection}} ({{author-name}})'
+    create: 'Nový záznam: {{collection}} „{{slug}}“ ({{author-name}})'
+    update: 'Úprava: {{collection}} „{{slug}}“ ({{author-name}})'
+    delete: 'Smazáno: {{collection}} „{{slug}}“ ({{author-name}})'
     uploadMedia: 'Nahrána fotka {{path}} ({{author-name}})'
     deleteMedia: 'Smazána fotka {{path}} ({{author-name}})'
+    openAuthoring: '{{message}} ({{author-name}})'
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
 
 locale: cs
 publish_mode: simple
@@ -57,7 +71,7 @@ collections:
                 widget: string
                 required: false
                 hint: >-
-                  Co je na fotce, např. „Nový rozvaděč rodinného domu, Štětí“.
+                  Co je na fotce, např. „Nový rozvaděč rodinného domu“.
                   Pomáhá to ve vyhledávačích. Když necháš prázdné, doplní se
                   obecný popis.
 
