@@ -5,4 +5,4 @@ Allow: /
 # administrace obsahu nepatří do vyhledávače
 Disallow: /admin/
 
-Sitemap: https://vbtronic.github.io/Jakub-Kocman/sitemap.xml
+Sitemap: https://jakubkocman.cz/sitemap.xml

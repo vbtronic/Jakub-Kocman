@@ -3,21 +3,20 @@
 // (a k tomu hlavičky v index.html / galerie.html a pole v admin/config.yml).
 
 /** Veřejná adresa webu, bez lomítka na konci. Používá se v sitemapě. */
-export const WEB = 'https://vbtronic.github.io/Jakub-Kocman';
+export const WEB = 'https://jakubkocman.cz';
 
 /**
- * Podadresář, ve kterém web běží — u GitHub Pages je to název repozitáře.
- * Na vlastní doméně v kořeni to bude prázdný řetězec.
+ * Podadresář, ve kterém web běží. Na vlastní doméně v kořeni je prázdný;
+ * na GitHub Pages to byl název repozitáře.
  *
- * Cesty k fotkám se v data/*.yml ukládají včetně tohoto prefixu, protože
- * administrace běží na /Jakub-Kocman/admin/ a relativní cesty by si přeložila
- * špatně. Do HTML se prefix zase odebírá, aby web fungoval i jinde a šel
- * otevřít lokálně.
+ * Cesty k fotkám se v data/*.yml ukládají od kořene webu, protože relativní
+ * cesty by si administrace na /admin/ přeložila špatně. Do HTML se počáteční
+ * lomítko zase odebírá, aby web fungoval i jinde a šel otevřít lokálně.
  */
-export const ZAKLADNI_CESTA = '/Jakub-Kocman';
+export const ZAKLADNI_CESTA = '';
 
 /**
- * Z uložené cesty udělá tvar pro HTML: "/Jakub-Kocman/img/g/a.webp" -> "img/g/a.webp"
+ * Z uložené cesty udělá tvar pro HTML: "/img/g/a.webp" -> "img/g/a.webp"
  *
  * Odřízne aktuální prefix, a když nesedí, spolehne se na to, že cesta k obrázku
  * vždycky začíná složkou img/. Díky tomu přežije i změnu ZAKLADNI_CESTA
@@ -33,7 +32,7 @@ export function proWeb(cesta) {
   return c.replace(/^\//, '');
 }
 
-/** Z cesty v repozitáři udělá tvar pro uložení: "img/g/a.webp" -> "/Jakub-Kocman/img/g/a.webp" */
+/** Z cesty v repozitáři udělá tvar pro uložení: "img/g/a.webp" -> "/img/g/a.webp" */
 export function proData(cesta) {
   return ZAKLADNI_CESTA + '/' + String(cesta || '').replace(/^\//, '');
 }

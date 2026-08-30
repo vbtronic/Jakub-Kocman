@@ -34,11 +34,11 @@ publish_mode: simple
 # Fotky se nahrávají sem; GitHub Action je pak převede na webp,
 # vyrobí náhled a přesune do img/g/ a img/t/.
 media_folder: img/upload
-public_folder: /Jakub-Kocman/img/upload
+public_folder: /img/upload
 
-site_url: https://vbtronic.github.io/Jakub-Kocman/
-display_url: https://vbtronic.github.io/Jakub-Kocman/
-logo_url: https://vbtronic.github.io/Jakub-Kocman/img/apple-touch-icon.png
+site_url: https://jakubkocman.cz/
+display_url: https://jakubkocman.cz/
+logo_url: https://jakubkocman.cz/img/apple-touch-icon.png
 
 collections:
   - name: galerie

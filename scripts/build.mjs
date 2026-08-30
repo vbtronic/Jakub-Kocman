@@ -220,6 +220,17 @@ ${obrazky}
 </urlset>
 `);
 
+// ---------------------------------------------------------------- robots
+fs.writeFileSync(path.join(ROOT, 'robots.txt'), `# https://www.robotstxt.org/
+User-agent: *
+Allow: /
+
+# administrace obsahu nepatří do vyhledávače
+Disallow: /admin/
+
+Sitemap: ${BASE}/sitemap.xml
+`);
+
 console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, ` +
   `${prace.length} pozic, ${recenze.length} recenzí, sitemap k ${DNES}`);
 if (!uvodni.length) console.log('  pozn.: žádná fotka není zaškrtnutá pro úvod, použito prvních šest');
