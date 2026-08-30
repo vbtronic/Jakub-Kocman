@@ -157,8 +157,8 @@ const sekceRecenzi = !recenze.length ? '' : `
     <div class="recenze">
 ${recenze.map(r => `      <figure class="recenze-karta">
         <div class="hvezdy" aria-label="Hodnocení ${Math.max(1, Math.min(5, Number(r.hvezdy) || 5))} z 5">${hvezdy(r.hvezdy)}</div>
-        <blockquote>${esc(r.text)}</blockquote>
-        <figcaption>${esc(r.jmeno || 'Zákazník')}</figcaption>
+        <blockquote>${esc(r.text)}</blockquote>${(r.jmeno || '').trim() ? `
+        <figcaption>${esc(r.jmeno)}</figcaption>` : ''}
       </figure>`).join('\n')}
     </div>${odkazNaProfil ? `
     <p class="recenze-vic">

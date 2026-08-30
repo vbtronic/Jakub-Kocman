@@ -2,4 +2,19 @@
 # Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.
 # Když tu není žádná recenze, sekce se na webu vůbec nezobrazí.
 odkaz: https://share.google/dKtffE1WKjKeDbLmr
-recenze: []
+recenze:
+  - jmeno: ""
+    hvezdy: 5
+    text: >-
+      Výměna cívky, svíček a kabelů zapalování, proběhla velmi rychle a za
+      rozumnou cenu. Pán je velmi pečlivý proto dávám maximální hodnocení.
+  - jmeno: ""
+    hvezdy: 5
+    text: Skvělý přístup, rychlost, profesionalita! Vřele doporučuji!
+  - jmeno: ""
+    hvezdy: 5
+    text: >-
+      Dobrý den, chci napsat recenzi na čištění interiérů v autě a technickou.
+      Pan Kocman mi vyčistil prostor motoru a interiér ( tetování sedaček). Byla
+      jsme moc spojená a můžu doporučit. Je to za rozumnou cenu a včas jak si
+      domluvíte. Vřele doporučuji každému kdo bude potřebovat.
