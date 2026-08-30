@@ -424,3 +424,10 @@ section{padding:104px 0}
 @media(max-width:900px){
   section{padding:72px 0}
 }
+
+/* Název hnutí verzálkami. Řešeno stylem, ne přepsáním textu – čtečky
+   pak jméno přečtou normálně a při kopírování se zachová běžný zápis. */
+.hnuti{
+  text-transform:uppercase;letter-spacing:.045em;font-size:.93em;
+  color:var(--ink);
+}
