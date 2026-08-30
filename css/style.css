@@ -62,20 +62,16 @@ header{
 .tel-link:hover{border-color:var(--green-500);color:var(--green-700)}
 .burger{
   width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;
-  display:grid;place-items:center;gap:5px;cursor:pointer;transition:.2s;padding:12px;
+  display:grid;place-items:center;cursor:pointer;transition:.2s;padding:0;color:var(--ink);
 }
 .burger:hover{border-color:var(--green-500)}
-.burger i{display:block;width:100%;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
-/* Prostřední čárka se schovává průhledností i smrsknutím na nulovou šířku.
-   Samotná průhlednost na iOS spolehlivě nestačí – konce čárky prosvítaly
-   po stranách křížku. Se scaleX(0) nemá co vykreslit, ať se opacity chová
-   jakkoli. */
-body.nav-open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
-body.nav-open .burger i:nth-child(2){opacity:0;transform:scaleX(0)}
-body.nav-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-/* Ramena křížku o kus delší, ať ikona v tlačítku nepůsobí drobně */
-body.nav-open .burger i:nth-child(1),
-body.nav-open .burger i:nth-child(3){width:26px}
+/* Dvě samostatné ikony, které se prohodí. Dřív to byly tři čárky otáčené
+   transformacemi – to je citlivé na odsazení i na chování prohlížeče a na
+   iOS z toho lezly kusy čárek ven. Takhle není co spočítat špatně. */
+.burger svg{grid-area:1/1;width:22px;height:22px;transition:opacity .2s,transform .2s}
+.burger .ik-krizek{opacity:0;transform:rotate(-90deg) scale(.7)}
+body.nav-open .burger .ik-menu{opacity:0;transform:rotate(90deg) scale(.7)}
+body.nav-open .burger .ik-krizek{opacity:1;transform:none}
 
 /* ---------- OVERLAY NAV ---------- */
 /* Překryv se přizpůsobuje výšce okna – s osmi položkami je právě výška
