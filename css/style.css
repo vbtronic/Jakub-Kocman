@@ -431,3 +431,6 @@ section{padding:104px 0}
   text-transform:uppercase;letter-spacing:.045em;font-size:.93em;
   color:var(--ink);
 }
+
+/* LinkedIn – ikona má sedět na účaří s textem tlačítka */
+.btn-li svg{flex:none}
