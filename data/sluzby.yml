@@ -1,21 +1,27 @@
+# Služby a ceník zobrazený na úvodní stránce.
+# Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.
 sluzby:
   - nadpis: Kompletní elektroinstalace RD
-    popis: Návrh a realizace rozvodů v novostavbách rodinných domů — od přípojky po
+    popis: >-
+      Návrh a realizace rozvodů v novostavbách rodinných domů — od přípojky po
       zásuvky.
     cena: Cena dle rozsahu
     ikona: dum
   - nadpis: Rekonstrukce bytů
-    popis: Kompletní výměna zastaralých hliníkových rozvodů, nové okruhy, jističe a
+    popis: >-
+      Kompletní výměna zastaralých hliníkových rozvodů, nové okruhy, jističe a
       zásuvky.
-    cena: Cenu dle rozsahu
+    cena: Cena dle rozsahu
     ikona: klic
   - nadpis: Výměny rozvaděčů
-    popis: Modernizace domovních rozvaděčů, doplnění proudových chráničů a
+    popis: >-
+      Modernizace domovních rozvaděčů, doplnění proudových chráničů a
       přepěťových ochran.
     cena: Cena dle rozsahu
     ikona: rozvadec
   - nadpis: Instalace osvětlení
-    popis: Světla interiérová i venkovní, LED pásky, spínání, stmívání a chytré
+    popis: >-
+      Světla interiérová i venkovní, LED pásky, spínání, stmívání a chytré
       ovládání.
     cena: Cena dle rozsahu
     ikona: zarovka
@@ -24,7 +30,9 @@ sluzby:
     cena: Cena dle rozsahu
     ikona: vystraha
   - nadpis: Menší elektroopravy
-    popis: Výměna zásuvek, vypínačů, přisvětlení, drobné zásahy — rychle a bez čekání.
+    popis: >-
+      Výměna zásuvek, vypínačů, přisvětlení, drobné zásahy — rychle a bez
+      čekání.
     cena: Cena dle rozsahu
     ikona: blesk
   - nadpis: Hodinový manžel
