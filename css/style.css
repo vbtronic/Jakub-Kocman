@@ -75,9 +75,9 @@ body.nav-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
    ta veličina, které je nedostatek. Když ani to nestačí, obsah roluje. */
 .nav{
   position:fixed;inset:0;z-index:40;background:var(--green-900);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;visibility:hidden;transition:.3s;
-  overflow-y:auto;padding:88px 24px 96px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:28px;opacity:0;visibility:hidden;transition:.3s;
+  overflow-y:auto;padding:86px 24px 28px;
 }
 body.nav-open .nav{opacity:1;visibility:visible}
 .nav ul{list-style:none;text-align:center}
@@ -91,13 +91,14 @@ body.nav-open .nav li:nth-child(5){transition-delay:.26s}
 body.nav-open .nav li:nth-child(6){transition-delay:.31s}
 body.nav-open .nav li:nth-child(7){transition-delay:.36s}
 .nav a{
-  color:#fff;font-size:clamp(19px,4.2vh,34px);font-weight:800;letter-spacing:-.03em;
+  color:#fff;font-size:clamp(17px,3.4vh,28px);font-weight:800;letter-spacing:-.03em;
   display:inline-block;padding:5px 10px;transition:.2s;
 }
 .nav a:hover{color:var(--green-500)}
+/* Patička je běžná součást toku, ne absolutně umístěná – jinak by se
+   při odrolování překryvu posunula přes položky menu. */
 .nav .nav-foot{
-  position:absolute;bottom:28px;left:0;right:0;text-align:center;
-  color:rgba(255,255,255,.6);font-size:14px;
+  text-align:center;color:rgba(255,255,255,.6);font-size:13.5px;flex:none;
 }
 .nav .nav-foot a{font-size:14px;font-weight:500;color:#fff}
 
