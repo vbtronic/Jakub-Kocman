@@ -121,3 +121,59 @@ collections:
                   - { label: Blesk, value: blesk }
                   - { label: Kolo / auto, value: kolo }
                   - { label: Zásuvka, value: zasuvka }
+
+  - name: zkusenosti
+    label: Pracovní zkušenosti
+    files:
+      - name: kariera
+        label: Praxe a vzdělání
+        file: data/zkusenosti.yml
+        editor:
+          preview: true
+        description: >-
+          Časová osa zaměstnání a vzdělání na úvodní stránce.
+          Pořadí v seznamu = pořadí na webu, nejnovější nahoře.
+        fields:
+          - name: podnadpis
+            label: Věta pod nadpisem
+            widget: string
+            hint: 'Krátké shrnutí, např. „Sedm let na stavbách, v průmyslu i u projekce“.'
+
+          - name: prace
+            label: Zaměstnání
+            label_singular: Pozice
+            widget: list
+            summary: '{{fields.obdobi}} — {{fields.firma}}'
+            fields:
+              - name: obdobi
+                label: Období
+                widget: string
+                hint: 'Např. „2022 – 2024“ nebo „12/2025 – současnost“.'
+              - { name: firma, label: Firma, widget: string }
+              - { name: pozice, label: Pracovní pozice, widget: string }
+              - name: popis
+                label: Co jsi tam dělal
+                widget: text
+                hint: Jedna až dvě věty o náplni práce.
+
+          - name: vzdelani
+            label: Vzdělání a oprávnění
+            label_singular: Položka
+            widget: list
+            summary: '{{fields.nadpis}}'
+            fields:
+              - name: nadpis
+                label: Škola nebo oprávnění
+                widget: string
+              - name: popis
+                label: Upřesnění
+                widget: text
+                hint: 'Obor a roky, u oprávnění jeho rozsah.'
+              - name: ikona
+                label: Ikona
+                widget: select
+                default: cepice
+                options:
+                  - { label: Vysoká škola, value: cepice }
+                  - { label: Střední škola, value: kniha }
+                  - { label: Oprávnění / osvědčení, value: stit }

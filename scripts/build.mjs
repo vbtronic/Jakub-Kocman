@@ -22,6 +22,9 @@ const IKONY = {
   blesk:    '<path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/>',
   kolo:     '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>',
   zasuvka:  '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="12" r="1.4"/><circle cx="15" cy="12" r="1.4"/>',
+  cepice:   '<path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/>',
+  kniha:    '<path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/>',
+  stit:     '<path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/>',
 };
 
 const esc = s => String(s ?? '')
@@ -35,6 +38,13 @@ function vloz(html, klic, obsah, kdeProChybu) {
   const re = new RegExp(`(<!-- ${klic}:start -->)[\\s\\S]*?(<!-- ${klic}:end -->)`);
   if (!re.test(html)) throw new Error(`Značka "${klic}" nenalezena v ${kdeProChybu}`);
   return html.replace(re, `$1\n${obsah}\n      $2`);
+}
+
+/** Jako vloz(), ale bez odřádkování — pro text uvnitř odstavce. */
+function vlozInline(html, klic, obsah, kdeProChybu) {
+  const re = new RegExp(`(<!-- ${klic}:start -->)[\\s\\S]*?(<!-- ${klic}:end -->)`);
+  if (!re.test(html)) throw new Error(`Značka "${klic}" nenalezena v ${kdeProChybu}`);
+  return html.replace(re, `$1${obsah}$2`);
 }
 
 // ---------------------------------------------------------------- galerie
@@ -83,6 +93,30 @@ const karta = s => `      <div class="card">
 
 const karty = sluzby.map(karta).join('\n');
 
+// ------------------------------------------------------------ zkušenosti
+const zkusenosti = nactiYaml('zkusenosti.yml');
+const prace = zkusenosti.prace || [];
+const vzdelani = zkusenosti.vzdelani || [];
+if (!prace.length) throw new Error('data/zkusenosti.yml neobsahuje žádné pozice');
+
+const neznameIkonyVzd = vzdelani.map(v => v.ikona).filter(k => k && !IKONY[k]);
+if (neznameIkonyVzd.length) {
+  throw new Error(`Neznámé ikony u vzdělání: ${[...new Set(neznameIkonyVzd)].join(', ')}`);
+}
+
+const pozice = prace.map(z => `      <div class="job">
+        <div class="when">${esc(z.obdobi)}</div>
+        <h3>${esc(z.firma)}</h3>
+        <div class="role">${esc(z.pozice)}</div>
+        <p>${esc(z.popis)}</p>
+      </div>`).join('\n');
+
+const skoly = vzdelani.map(v => `      <div class="card">
+        <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${IKONY[v.ikona] || IKONY.cepice}</svg></div>
+        <h3>${esc(v.nadpis)}</h3>
+        <p>${esc(v.popis)}</p>
+      </div>`).join('\n');
+
 // ---------------------------------------------------------------- zápis HTML
 const pocet = String(fotky.length);
 const nahradPocet = h =>
@@ -91,6 +125,9 @@ const nahradPocet = h =>
 let index = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 index = vloz(index, 'sluzby', karty, 'index.html');
 index = vloz(index, 'galerie', ukazkaShotu, 'index.html');
+index = vloz(index, 'prace', pozice, 'index.html');
+index = vloz(index, 'vzdelani', skoly, 'index.html');
+index = vlozInline(index, 'zkusenosti-uvod', esc(zkusenosti.podnadpis || ''), 'index.html');
 index = nahradPocet(index);
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
@@ -129,5 +166,6 @@ ${obrazky}
 </urlset>
 `);
 
-console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, sitemap k ${DNES}`);
+console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, ` +
+  `${prace.length} pozic, ${vzdelani.length} položek vzdělání, sitemap k ${DNES}`);
 if (!uvodni.length) console.log('  pozn.: žádná fotka není zaškrtnutá pro úvod, použito prvních šest');

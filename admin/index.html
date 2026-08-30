@@ -86,6 +86,43 @@
     }
   });
 
+  // ------------------------------------------------------ zkušenosti
+  var NahledZkusenosti = createClass({
+    render: function () {
+      var e = this.props.entry;
+      var prace = seznam(e, 'prace');
+      var vzdelani = seznam(e, 'vzdelani');
+
+      return h('div', { className: 'nah' },
+        h('div', { className: 'nah-hlava' },
+          h('strong', {}, 'Praxe a vzdělání'),
+          h('span', {}, prace.length + ' pozic · ' + vzdelani.length + ' položek vzdělání')
+        ),
+        h('p', { className: 'nah-lead' }, e.getIn(['data', 'podnadpis']) || ''),
+        h('div', { className: 'nah-osa' }, prace.map(function (z, i) {
+          return h('div', { key: i, className: 'nah-prace' },
+            h('span', { className: 'nah-obdobi' }, z.obdobi || ''),
+            h('strong', {}, z.firma || 'bez názvu'),
+            h('span', { className: 'nah-pozice' }, z.pozice || ''),
+            h('p', {}, z.popis || '')
+          );
+        })),
+        vzdelani.length ? h('div', { className: 'nah-karty', style: 'margin-top:20px' },
+          vzdelani.map(function (v, i) {
+            return h('div', { key: i, className: 'nah-karta' },
+              h('h3', {}, v.nadpis || 'bez názvu'),
+              h('p', {}, v.popis || '')
+            );
+          })
+        ) : null
+      );
+    }
+  });
+
+  ['zkusenosti', 'kariera'].forEach(function (k) {
+    CMS.registerPreviewTemplate(k, NahledZkusenosti);
+  });
+
   // Registrujeme pod názvem kolekce i souboru — Decap se v tomhle
   // mezi verzemi liší a registrace navíc nic nerozbije.
   ['galerie', 'fotky'].forEach(function (k) {
@@ -112,7 +149,15 @@
     '.nah-karta{background:#fff;border:1px solid #e2e6e4;border-radius:12px;padding:16px}',
     '.nah-karta h3{margin:0 0 6px;font-size:15px}',
     '.nah-karta p{margin:0;font-size:13px;color:#5c6b6f;line-height:1.45}',
-    '.nah-cena{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#1d6b45;background:#eaf3ed;padding:4px 10px;border-radius:99px}'
+    '.nah-cena{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#1d6b45;background:#eaf3ed;padding:4px 10px;border-radius:99px}',
+    '.nah-lead{margin:0 0 18px;font-size:14px;color:#5c6b6f}',
+    '.nah-osa{border-left:2px solid #e2e6e4;padding-left:18px;display:grid;gap:16px}',
+    '.nah-prace{position:relative}',
+    '.nah-prace::before{content:"";position:absolute;left:-24px;top:5px;width:9px;height:9px;border-radius:50%;background:#fff;border:2.5px solid #2f9e63}',
+    '.nah-obdobi{display:block;font-size:11.5px;font-weight:600;color:#1d6b45;letter-spacing:.03em}',
+    '.nah-prace strong{display:block;font-size:14.5px;margin-top:1px}',
+    '.nah-pozice{display:block;font-size:12.5px;color:#5c6b6f;font-weight:500}',
+    '.nah-prace p{margin:4px 0 0;font-size:12.5px;color:#5c6b6f;line-height:1.45}'
   ].join('\n'), { raw: true });
 })();
 </script>
