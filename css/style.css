@@ -311,11 +311,11 @@ footer a:hover{color:var(--green-500)}
 }
 
 /* ---------- PŮSOBNOST (lokální SEO) ---------- */
-.area-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;list-style:none}
-.area-list li{
-  font-size:14px;font-weight:500;background:#fff;border:1px solid var(--line);
-  padding:7px 15px;border-radius:999px;
-}
+/* Krátká sekce – na plnou šířku by text plaval v prázdnu, proto na střed. */
+#pusobnost .wrap{max-width:720px;text-align:center}
+#pusobnost .lead{margin:0 auto}
+#pusobnost .eyebrow,#pusobnost .cta-row{justify-content:center}
+#pusobnost .cta-row{display:flex}
 .lb-cap{
   position:absolute;bottom:56px;left:50%;transform:translateX(-50%);
   max-width:min(760px,86vw);text-align:center;color:#fff;font-size:15px;line-height:1.5;
@@ -354,4 +354,22 @@ footer a:hover{color:var(--green-500)}
 @media(max-width:900px){
   .kniha-grid{grid-template-columns:1fr;gap:36px;justify-items:start}
   .kniha-obal{width:210px}
+}
+
+/* ---------- POSTUPNÉ ODKRÝVÁNÍ PŘI SCROLLU ---------- */
+/* Třídu js-reveal přidá JavaScript. Bez něj zůstane všechno normálně
+   viditelné — animace nesmí být podmínkou pro přečtení webu. */
+@media (prefers-reduced-motion: no-preference){
+  .js-reveal .reveal{
+    opacity:0;transform:translateY(20px);
+    transition:opacity .55s ease-out,transform .55s ease-out;
+  }
+  .js-reveal .reveal.videt{opacity:1;transform:none}
+}
+
+/* Při tisku nesmí zůstat nic schované – tiskne se bez JavaScriptu
+   a bez scrollování, takže by neodkryté bloky vyšly prázdné. */
+@media print{
+  .js-reveal .reveal{opacity:1!important;transform:none!important}
+  header,.nav,.burger{display:none}
 }

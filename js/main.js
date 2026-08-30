@@ -45,3 +45,30 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') show(idx - 1);
   if (e.key === 'ArrowRight') show(idx + 1);
 });
+
+// Postupné odkrývání sekcí při scrollu.
+// Třídu js-reveal přidáváme až odsud, takže bez JavaScriptu zůstane
+// obsah normálně viditelný. Respektujeme i nastavení "omezit pohyb".
+(() => {
+  const klid = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (klid || !('IntersectionObserver' in window)) return;
+
+  // Hero ani hlavičku galerie neanimujeme – jsou nad ohybem stránky
+  // a neviditelný start by jen zdržel to hlavní, co má člověk vidět.
+  const bloky = [...document.querySelectorAll('section .wrap')]
+    .filter(el => !el.closest('.hero'));
+  if (!bloky.length) return;
+
+  document.documentElement.classList.add('js-reveal');
+  bloky.forEach(el => el.classList.add('reveal'));
+
+  const pozorovatel = new IntersectionObserver((zaznamy, self) => {
+    zaznamy.forEach(z => {
+      if (!z.isIntersecting) return;
+      z.target.classList.add('videt');
+      self.unobserve(z.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+
+  bloky.forEach(el => pozorovatel.observe(el));
+})();
