@@ -12,6 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import yaml from 'js-yaml';
+import { proData, proWeb } from './nastaveni.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const UPLOAD = path.join(ROOT, 'img', 'upload');
@@ -88,8 +89,8 @@ for (const soubor of kZpracovani) {
   console.log(`  ${soubor} (${meta.width}×${meta.height}, ${puvodni} kB) → ${jmeno} (${nova} kB)`);
 
   prejmenovano.set(`img/upload/${soubor}`, {
-    soubor: `img/g/${jmeno}`,
-    nahled: `img/t/${jmeno}`,
+    soubor: proData(`img/g/${jmeno}`),
+    nahled: proData(`img/t/${jmeno}`),
   });
   fs.unlinkSync(zdroj);
 }
@@ -101,8 +102,8 @@ data.fotky = data.fotky || [];
 
 let zmeneno = 0;
 for (const f of data.fotky) {
-  // Decap uloží cestu s lomítkem na začátku i bez něj — ošetříme obojí
-  const klic = String(f.soubor || '').replace(/^\//, '');
+  // Decap ukládá cesty od kořene webu; pro porovnání je zkrátíme
+  const klic = proWeb(f.soubor);
   const nove = prejmenovano.get(klic);
   if (nove) { f.soubor = nove.soubor; f.nahled = nove.nahled; zmeneno++; }
 }

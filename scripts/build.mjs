@@ -8,9 +8,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
+import { WEB, proWeb } from './nastaveni.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BASE = 'https://vbtronic.github.io/Jakub-Kocman';   // <-- při vlastní doméně změnit tady
+const BASE = WEB;   // adresa webu je v scripts/nastaveni.mjs
 
 const IKONY = {
   dum:      '<path d="M3 10 12 3l9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>',
@@ -47,9 +48,9 @@ const popisNeboVychozi = (f, i) =>
 
 const shot = (f, i) => {
   const popis = popisNeboVychozi(f, i);
-  return `      <button class="shot" data-full="${esc(f.soubor)}" data-popis="${esc(popis)}" ` +
+  return `      <button class="shot" data-full="${esc(proWeb(f.soubor))}" data-popis="${esc(popis)}" ` +
     `aria-label="Zvětšit fotku ${i + 1} ze ${fotky.length}">` +
-    `<img src="${esc(f.nahled)}" alt="${esc(popis)}" loading="lazy" decoding="async" ` +
+    `<img src="${esc(proWeb(f.nahled))}" alt="${esc(popis)}" loading="lazy" decoding="async" ` +
     `width="800" height="600"></button>`;
 };
 
@@ -94,7 +95,7 @@ fs.writeFileSync(path.join(ROOT, 'galerie.html'), galerie);
 // ---------------------------------------------------------------- sitemap
 const DNES = new Date().toISOString().slice(0, 10);
 const obrazky = fotky.map((f, i) => `    <image:image>
-      <image:loc>${BASE}/${esc(f.soubor)}</image:loc>
+      <image:loc>${BASE}/${esc(proWeb(f.soubor))}</image:loc>
       <image:title>${esc(popisNeboVychozi(f, i))}</image:title>
     </image:image>`).join('\n');
 
