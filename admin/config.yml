@@ -47,6 +47,8 @@ collections:
       - name: fotky
         label: Fotky na webu
         file: data/galerie.yml
+        editor:
+          preview: true
         description: >-
           Fotky realizací. Přetažením změníš pořadí — první fotka je na webu
           vlevo nahoře. Prvních šest se ukazuje i na úvodní stránce.
@@ -81,6 +83,8 @@ collections:
       - name: seznam
         label: Kartičky služeb
         file: data/sluzby.yml
+        editor:
+          preview: true
         description: Služby a ceny na úvodní stránce.
         fields:
           - name: sluzby

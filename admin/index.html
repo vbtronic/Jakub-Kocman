@@ -8,8 +8,113 @@
 <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<!-- Verze je zámerně přibitá na konkrétní číslo, ať se administrace
+<!-- Verze je záměrně přibitá na konkrétní číslo, ať se administrace
      nerozbije sama od sebe, až vyjde nová verze Decapu. -->
 <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+<script>
+(function () {
+  var h = window.h;
+  var createClass = window.createClass;
+  if (!window.CMS || !h || !createClass) return;   // beze změny, když se API posune
+
+  var WEB = 'https://vbtronic.github.io/Jakub-Kocman/';
+
+  // Cesta k obrázku na adresu, kterou zvládne <img>.
+  // Nahraná fotka ještě není na webu, tu umí zobrazit jen getAsset.
+  function adresa(getAsset, cesta) {
+    if (!cesta) return '';
+    try {
+      var a = getAsset(cesta);
+      if (a && String(a)) return String(a);
+    } catch (e) { /* spadneme na veřejnou adresu níž */ }
+    return WEB + String(cesta).replace(/^\//, '');
+  }
+
+  function seznam(entry, klic) {
+    var v = entry.getIn(['data', klic]);
+    if (!v) return [];
+    return v.toJS ? v.toJS() : v;
+  }
+
+  // ---------------------------------------------------------- galerie
+  var NahledGalerie = createClass({
+    render: function () {
+      var props = this.props;
+      var fotky = seznam(props.entry, 'fotky');
+      if (!fotky.length) return h('p', { className: 'nah-prazdno' }, 'Zatím tu nejsou žádné fotky.');
+
+      return h('div', { className: 'nah' },
+        h('div', { className: 'nah-hlava' },
+          h('strong', {}, 'Galerie'),
+          h('span', {}, fotky.length + ' fotek · prvních 6 je i na úvodní stránce')
+        ),
+        h('div', { className: 'nah-mrizka' }, fotky.map(function (f, i) {
+          return h('figure', { key: i, className: i < 6 ? 'nah-uvod' : '' },
+            h('img', {
+              src: adresa(props.getAsset, f.nahled || f.soubor),
+              alt: f.popis || '',
+              loading: 'lazy'
+            }),
+            h('figcaption', { className: f.popis ? '' : 'nah-chybi' },
+              f.popis || 'bez popisku'),
+            i < 6 ? h('span', { className: 'nah-znacka' }, 'úvod') : null
+          );
+        }))
+      );
+    }
+  });
+
+  // ---------------------------------------------------------- služby
+  var NahledSluzby = createClass({
+    render: function () {
+      var sluzby = seznam(this.props.entry, 'sluzby');
+      if (!sluzby.length) return h('p', { className: 'nah-prazdno' }, 'Zatím tu nejsou žádné služby.');
+
+      return h('div', { className: 'nah' },
+        h('div', { className: 'nah-hlava' },
+          h('strong', {}, 'Služby a ceník'),
+          h('span', {}, sluzby.length + ' kartiček na úvodní stránce')
+        ),
+        h('div', { className: 'nah-karty' }, sluzby.map(function (s, i) {
+          return h('div', { key: i, className: 'nah-karta' },
+            h('h3', {}, s.nadpis || 'bez názvu'),
+            h('p', {}, s.popis || ''),
+            h('span', { className: 'nah-cena' }, s.cena || '')
+          );
+        }))
+      );
+    }
+  });
+
+  // Registrujeme pod názvem kolekce i souboru — Decap se v tomhle
+  // mezi verzemi liší a registrace navíc nic nerozbije.
+  ['galerie', 'fotky'].forEach(function (k) {
+    CMS.registerPreviewTemplate(k, NahledGalerie);
+  });
+  ['sluzby', 'seznam'].forEach(function (k) {
+    CMS.registerPreviewTemplate(k, NahledSluzby);
+  });
+
+  CMS.registerPreviewStyle([
+    'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#14181a;margin:0;padding:20px;background:#f6f7f6}',
+    '.nah-hlava{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #e2e6e4}',
+    '.nah-hlava strong{font-size:17px}',
+    '.nah-hlava span{font-size:13px;color:#5c6b6f}',
+    '.nah-prazdno{color:#5c6b6f;font-size:14px}',
+    '.nah-mrizka{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}',
+    '.nah-mrizka figure{margin:0;position:relative;background:#fff;border:1px solid #e2e6e4;border-radius:10px;overflow:hidden}',
+    '.nah-mrizka img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#eee}',
+    '.nah-mrizka figcaption{font-size:11.5px;line-height:1.35;padding:7px 9px;color:#14181a}',
+    '.nah-chybi{color:#a4adaf;font-style:italic}',
+    '.nah-uvod{box-shadow:0 0 0 2px #2f9e63}',
+    '.nah-znacka{position:absolute;top:6px;left:6px;background:#1d6b45;color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:99px}',
+    '.nah-karty{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}',
+    '.nah-karta{background:#fff;border:1px solid #e2e6e4;border-radius:12px;padding:16px}',
+    '.nah-karta h3{margin:0 0 6px;font-size:15px}',
+    '.nah-karta p{margin:0;font-size:13px;color:#5c6b6f;line-height:1.45}',
+    '.nah-cena{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;color:#1d6b45;background:#eaf3ed;padding:4px 10px;border-radius:99px}'
+  ].join('\n'), { raw: true });
+})();
+</script>
 </body>
 </html>
