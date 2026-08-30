@@ -47,6 +47,25 @@ function vlozInline(html, klic, obsah, kdeProChybu) {
   return html.replace(re, `$1${obsah}$2`);
 }
 
+/**
+ * Menu je v HTML dvakrát — překryv pro mobil a řádek pro počítač.
+ * Tohle hlídá, že se neshodují jen náhodou; při rozejití build spadne,
+ * ať se to nezjistí až od návštěvníka.
+ */
+function zkontrolujMenu(html, kde) {
+  const vytahni = (re) => {
+    const blok = html.match(re);
+    if (!blok) return null;
+    return [...blok[1].matchAll(/href="([^"]+)"/g)].map(m => m[1]).join(' | ');
+  };
+  const mobil = vytahni(/<nav class="nav" id="nav"[^>]*>([\s\S]*?)<\/ul>/);
+  const pocitac = vytahni(/<nav class="nav-pc"[^>]*>([\s\S]*?)<\/ul>/);
+  if (!mobil || !pocitac) throw new Error(`V ${kde} chybí jedno z menu`);
+  if (mobil !== pocitac) {
+    throw new Error(`Menu v ${kde} se rozešla:\n  mobil:   ${mobil}\n  počítač: ${pocitac}`);
+  }
+}
+
 // ---------------------------------------------------------------- galerie
 const { fotky = [] } = nactiYaml('galerie.yml');
 if (!fotky.length) throw new Error('data/galerie.yml neobsahuje žádné fotky');
@@ -162,11 +181,13 @@ index = vloz(index, 'vzdelani', skoly, 'index.html');
 index = vlozInline(index, 'zkusenosti-uvod', esc(zkusenosti.podnadpis || ''), 'index.html');
 index = vlozInline(index, 'recenze', sekceRecenzi, 'index.html');
 index = nahradPocet(index);
+zkontrolujMenu(index, 'index.html');
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 let galerie = fs.readFileSync(path.join(ROOT, 'galerie.html'), 'utf8');
 galerie = vloz(galerie, 'galerie', vsechnyShoty, 'galerie.html');
 galerie = nahradPocet(galerie);
+zkontrolujMenu(galerie, 'galerie.html');
 fs.writeFileSync(path.join(ROOT, 'galerie.html'), galerie);
 
 // ---------------------------------------------------------------- sitemap

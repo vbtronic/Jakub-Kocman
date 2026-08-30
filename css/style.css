@@ -444,30 +444,6 @@ section{padding:104px 0}
 .zivotopis a:hover{border-bottom-color:var(--green-500)}
 .zivotopis svg{flex:none}
 
-/* ---------- MENU NA POČÍTAČI ---------- */
-/* Na mobilu zůstává celoobrazovkové překrytí. Od 1000 px se z něj stane
-   běžná lišta — stejné odkazy, jen jinak vysázené. */
-@media(min-width:1000px){
-  .burger{display:none}
-  .nav{
-    position:static;inset:auto;background:none;opacity:1;visibility:visible;
-    display:flex;align-items:center;
-  }
-  .nav ul{display:flex;align-items:center;gap:24px;text-align:left}
-  .nav li{margin:0;opacity:1;transform:none;transition:none}
-  .nav a{
-    color:var(--ink);font-size:14.5px;font-weight:600;letter-spacing:0;
-    padding:6px 0;border-bottom:2px solid transparent;transition:.2s;
-  }
-  .nav a:hover{color:var(--green-700);border-bottom-color:var(--green-500)}
-  .nav .nav-foot{display:none}
-  .bar-right{gap:28px}
-}
-/* Úzká okna: schová se e-mail v liště, ať zbyde místo na menu */
-@media(min-width:1000px) and (max-width:1180px){
-  .nav ul{gap:18px}
-  .tel-link{display:none}
-}
 
 /* ---------- ODKAZY NA SÍTĚ ---------- */
 .socialy{display:flex;gap:10px;margin-top:22px}
@@ -500,12 +476,26 @@ section{padding:104px 0}
 .recenze-vic a:hover{border-bottom-color:var(--green-500)}
 @media(max-width:900px){ .recenze{grid-template-columns:1fr} }
 
-/* ---------- OPRAVA MOBILNÍHO MENU ---------- */
-/* backdrop-filter dělá z hlavičky vztažný rámec pro position:fixed potomky,
-   takže by se celoobrazovkové menu schovalo do výšky lišty. Na mobilu ho
-   proto vypínáme — nav je tam fixed. Na počítači je nav statický, takže
-   rozostření může zůstat. */
-@media(max-width:999px){
-  header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,.98)}
-  .nav{z-index:60}
+
+/* ---------- MENU ---------- */
+/* Dvě samostatná menu, ne jedno přepínané:
+   .nav     — celoobrazovkový překryv na mobilu, leží MIMO hlavičku, protože
+              backdrop-filter hlavičky by mu rozbil position:fixed
+   .nav-pc  — obyčejný řádek odkazů v liště, jen na širokých oknech
+   Odkazy v obou hlídá build (scripts/build.mjs), aby se nerozešly. */
+.nav-pc{display:none}
+@media(min-width:1000px){
+  .burger{display:none}
+  .nav-pc{display:block}
+  .nav-pc ul{display:flex;align-items:center;gap:24px;list-style:none}
+  .nav-pc a{
+    font-size:14.5px;font-weight:600;color:var(--ink);
+    padding:6px 0;border-bottom:2px solid transparent;transition:.2s;
+  }
+  .nav-pc a:hover{color:var(--green-700);border-bottom-color:var(--green-500)}
+  .bar-right{gap:28px}
+}
+@media(min-width:1000px) and (max-width:1180px){
+  .nav-pc ul{gap:18px}
+  .tel-link{display:none}
 }
