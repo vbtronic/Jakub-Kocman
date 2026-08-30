@@ -117,6 +117,38 @@ const skoly = vzdelani.map(v => `      <div class="card">
         <p>${esc(v.popis)}</p>
       </div>`).join('\n');
 
+// ---------------------------------------------------------------- recenze
+const recenzeData = nactiYaml('recenze.yml');
+const recenze = (recenzeData.recenze || []).filter(r => r && (r.text || '').trim());
+const odkazNaProfil = recenzeData.odkaz || '';
+
+const hvezdy = n => {
+  const pocet = Math.max(0, Math.min(5, Number(n) || 5));
+  return '★'.repeat(pocet) + '☆'.repeat(5 - pocet);
+};
+
+// Bez recenzí sekci vůbec nevykreslíme — prázdná by působila hůř než žádná.
+const sekceRecenzi = !recenze.length ? '' : `
+<!-- RECENZE -->
+<section id="recenze" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Reference</div>
+    <h2>Co říkají zákazníci</h2>
+    <p class="lead">Hodnocení z Google. Napsali je lidé, kterým jsem dělal zakázku.</p>
+    <div class="recenze">
+${recenze.map(r => `      <figure class="recenze-karta">
+        <div class="hvezdy" aria-label="Hodnocení ${Math.max(1, Math.min(5, Number(r.hvezdy) || 5))} z 5">${hvezdy(r.hvezdy)}</div>
+        <blockquote>${esc(r.text)}</blockquote>
+        <figcaption>${esc(r.jmeno || 'Zákazník')}</figcaption>
+      </figure>`).join('\n')}
+    </div>${odkazNaProfil ? `
+    <p class="recenze-vic">
+      <a href="${esc(odkazNaProfil)}" target="_blank" rel="noopener">Všechna hodnocení na Google</a>
+    </p>` : ''}
+  </div>
+</section>
+`;
+
 // ---------------------------------------------------------------- zápis HTML
 const pocet = String(fotky.length);
 const nahradPocet = h =>
@@ -128,6 +160,7 @@ index = vloz(index, 'galerie', ukazkaShotu, 'index.html');
 index = vloz(index, 'prace', pozice, 'index.html');
 index = vloz(index, 'vzdelani', skoly, 'index.html');
 index = vlozInline(index, 'zkusenosti-uvod', esc(zkusenosti.podnadpis || ''), 'index.html');
+index = vlozInline(index, 'recenze', sekceRecenzi, 'index.html');
 index = nahradPocet(index);
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
@@ -167,5 +200,5 @@ ${obrazky}
 `);
 
 console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, ` +
-  `${prace.length} pozic, ${vzdelani.length} položek vzdělání, sitemap k ${DNES}`);
+  `${prace.length} pozic, ${recenze.length} recenzí, sitemap k ${DNES}`);
 if (!uvodni.length) console.log('  pozn.: žádná fotka není zaškrtnutá pro úvod, použito prvních šest');

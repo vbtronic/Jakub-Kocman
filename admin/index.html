@@ -128,6 +128,34 @@
       );
   });
 
+  // ---------------------------------------------------------- recenze
+  var NahledRecenzi = bezpecny('recenze', function (props) {
+    var r = seznam(props.entry, 'recenze');
+    if (!r.length) {
+      return h('p', { className: 'nah-prazdno' },
+        'Zatím tu není žádná recenze — sekce se na webu nezobrazuje.');
+    }
+    return h('div', { className: 'nah' },
+      h('div', { className: 'nah-hlava' },
+        h('strong', {}, 'Recenze'),
+        h('span', {}, r.length + ' ' + (r.length === 1 ? 'hodnocení' : 'hodnocení'))
+      ),
+      h('div', { className: 'nah-karty' }, r.map(function (x, i) {
+        var n = Math.max(1, Math.min(5, Number(x.hvezdy) || 5));
+        return h('div', { key: i, className: 'nah-karta' },
+          h('div', { className: 'nah-hvezdy' },
+            '\u2605'.repeat(n) + '\u2606'.repeat(5 - n)),
+          h('p', {}, x.text || ''),
+          h('strong', { className: 'nah-jmeno' }, x.jmeno || 'Zákazník')
+        );
+      }))
+    );
+  });
+
+  ['recenze', 'hodnoceni'].forEach(function (k) {
+    CMS.registerPreviewTemplate(k, NahledRecenzi);
+  });
+
   ['zkusenosti', 'kariera'].forEach(function (k) {
     CMS.registerPreviewTemplate(k, NahledZkusenosti);
   });
@@ -167,7 +195,9 @@
     '.nah-prace strong{display:block;font-size:14.5px;margin-top:1px}',
     '.nah-pozice{display:block;font-size:12.5px;color:#5c6b6f;font-weight:500}',
     '.nah-prace p{margin:4px 0 0;font-size:12.5px;color:#5c6b6f;line-height:1.45}',
-    '.nah-odsazeno{margin-top:20px}'
+    '.nah-odsazeno{margin-top:20px}',
+    '.nah-hvezdy{color:#e8a33d;font-size:14px;letter-spacing:.1em;margin-bottom:8px}',
+    '.nah-jmeno{display:block;margin-top:10px;padding-top:9px;border-top:1px solid #e2e6e4;font-size:12.5px;color:#5c6b6f}'
   ].join('\n'), { raw: true });
 })();
 </script>

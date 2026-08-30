@@ -177,3 +177,44 @@ collections:
                   - { label: Vysoká škola, value: cepice }
                   - { label: Střední škola, value: kniha }
                   - { label: Oprávnění / osvědčení, value: stit }
+
+  - name: recenze
+    label: Recenze zákazníků
+    files:
+      - name: hodnoceni
+        label: Hodnocení z Google
+        file: data/recenze.yml
+        editor:
+          preview: true
+        description: >-
+          Recenze se ukazují nad kontaktem. Dokud tu není žádná,
+          sekce se na webu vůbec nezobrazí.
+        fields:
+          - name: odkaz
+            label: Odkaz na profil s hodnoceními
+            widget: string
+            required: false
+            hint: 'Z Google Maps: u firmy Sdílet → Kopírovat odkaz.'
+          - name: recenze
+            label: Recenze
+            label_singular: Recenze
+            widget: list
+            summary: '{{fields.jmeno}} — {{fields.hvezdy}}★'
+            fields:
+              - name: jmeno
+                label: Jméno zákazníka
+                widget: string
+                hint: Tak, jak je podepsaný u hodnocení.
+              - name: hvezdy
+                label: Počet hvězd
+                widget: number
+                default: 5
+                value_type: int
+                min: 1
+                max: 5
+              - name: text
+                label: Text recenze
+                widget: text
+                hint: >-
+                  Zkopíruj přesně, jak to člověk napsal. Nepřepisuj to
+                  ani nevylepšuj — je to jeho slovo, ne naše.
