@@ -108,14 +108,17 @@ for (const f of data.fotky) {
   if (nove) { f.soubor = nove.soubor; f.nahled = nove.nahled; zmeneno++; }
 }
 
-// fotky nahrané mimo galerii (nikdo je v YAML nezmínil) připojíme na konec
+// Fotky nahrané mimo galerii (nikdo je v YAML nezmínil) dáme na začátek —
+// nejnovější práce má být vidět první, ne na konci stovky fotek.
 const zminene = new Set(data.fotky.map(f => String(f.soubor || '')));
+const pribyle = [];
 for (const nove of prejmenovano.values()) {
   if (!zminene.has(nove.soubor)) {
-    data.fotky.push({ soubor: nove.soubor, nahled: nove.nahled, popis: '' });
+    pribyle.push({ soubor: nove.soubor, nahled: nove.nahled, popis: '', uvod: false });
     zmeneno++;
   }
 }
+if (pribyle.length) data.fotky.unshift(...pribyle);
 
 const hlavicka = '# Fotky v galerii. Pořadí v tomto souboru = pořadí na webu.\n' +
                  '# Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.\n';

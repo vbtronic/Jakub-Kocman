@@ -46,10 +46,10 @@
       return h('div', { className: 'nah' },
         h('div', { className: 'nah-hlava' },
           h('strong', {}, 'Galerie'),
-          h('span', {}, fotky.length + ' fotek · prvních 6 je i na úvodní stránce')
+          h('span', {}, fotky.length + ' fotek · ' + fotky.filter(function(f){return f.uvod}).length + ' na úvodní stránce')
         ),
         h('div', { className: 'nah-mrizka' }, fotky.map(function (f, i) {
-          return h('figure', { key: i, className: i < 6 ? 'nah-uvod' : '' },
+          return h('figure', { key: i, className: f.uvod ? 'nah-uvod' : '' },
             h('img', {
               src: adresa(props.getAsset, f.nahled || f.soubor),
               alt: f.popis || '',
@@ -57,7 +57,7 @@
             }),
             h('figcaption', { className: f.popis ? '' : 'nah-chybi' },
               f.popis || 'bez popisku'),
-            i < 6 ? h('span', { className: 'nah-znacka' }, 'úvod') : null
+            f.uvod ? h('span', { className: 'nah-znacka' }, 'úvod') : null
           );
         }))
       );

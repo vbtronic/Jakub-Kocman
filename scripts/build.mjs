@@ -55,7 +55,14 @@ const shot = (f, i) => {
 };
 
 const vsechnyShoty = fotky.map(shot).join('\n');
-const ukazkaShotu = fotky.slice(0, 6).map(shot).join('\n');
+
+// Na úvodní stránku jdou fotky zaškrtnuté v administraci. Kdyby nebyla
+// zaškrtnutá žádná, vezmeme prvních šest, ať úvod nikdy nezůstane prázdný.
+const uvodni = fotky.filter(f => f.uvod);
+const proUvod = uvodni.length ? uvodni : fotky.slice(0, 6);
+const ukazkaShotu = proUvod
+  .map(f => shot(f, fotky.indexOf(f)))
+  .join('\n');
 
 // ---------------------------------------------------------------- služby
 const { sluzby = [] } = nactiYaml('sluzby.yml');
@@ -122,4 +129,5 @@ ${obrazky}
 </urlset>
 `);
 
-console.log(`✓ ${fotky.length} fotek, ${sluzby.length} služeb, sitemap k ${DNES}`);
+console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, sitemap k ${DNES}`);
+if (!uvodni.length) console.log('  pozn.: žádná fotka není zaškrtnutá pro úvod, použito prvních šest');

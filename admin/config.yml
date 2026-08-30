@@ -50,8 +50,8 @@ collections:
         editor:
           preview: true
         description: >-
-          Fotky realizací. Přetažením změníš pořadí — první fotka je na webu
-          vlevo nahoře. Prvních šest se ukazuje i na úvodní stránce.
+          Fotky realizací. Nově nahraná fotka se sama zařadí nahoru.
+          Zaškrtnutím vybereš, které se ukážou i na úvodní stránce.
         fields:
           - name: fotky
             label: Fotky
@@ -76,6 +76,14 @@ collections:
                   Co je na fotce, např. „Nový rozvaděč rodinného domu“.
                   Pomáhá to ve vyhledávačích. Když necháš prázdné, doplní se
                   obecný popis.
+              - name: uvod
+                label: Zobrazit na úvodní stránce
+                widget: boolean
+                required: false
+                default: false
+                hint: >-
+                  Zaškrtnuté fotky se ukazují i na úvodní stránce. Ostatní
+                  jsou jen v galerii. Nemusíš nic přetahovat.
 
   - name: sluzby
     label: Služby a ceník
