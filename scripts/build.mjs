@@ -58,10 +58,15 @@ const popisNeboVychozi = (f, i) =>
 
 const shot = (f, i) => {
   const popis = popisNeboVychozi(f, i);
+  // Vlastní popisek ukážeme i na dlaždici. Obecný náhradní text ne —
+  // "Realizace elektroinstalace č. 47" nikomu nic neřekne a jen by rušil.
+  const vlastni = (f.popis || '').trim();
   return `      <button class="shot" data-full="${esc(proWeb(f.soubor))}" data-popis="${esc(popis)}" ` +
     `aria-label="Zvětšit fotku ${i + 1} ze ${fotky.length}">` +
     `<img src="${esc(proWeb(f.nahled))}" alt="${esc(popis)}" loading="lazy" decoding="async" ` +
-    `width="800" height="600"></button>`;
+    `width="800" height="600">` +
+    (vlastni ? `<span class="shot-popis">${esc(vlastni)}</span>` : '') +
+    `</button>`;
 };
 
 const vsechnyShoty = fotky.map(shot).join('\n');
