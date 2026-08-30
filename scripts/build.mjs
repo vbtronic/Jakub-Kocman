@@ -151,7 +151,7 @@ const sekceRecenzi = !recenze.length ? '' : `
 <!-- RECENZE -->
 <section id="recenze" class="alt">
   <div class="wrap">
-    <div class="eyebrow">Reference</div>
+    <div class="eyebrow">Recenze</div>
     <h2>Co říkají zákazníci</h2>
     <p class="lead">Hodnocení z Google. Napsali je lidé, kterým jsem dělal zakázku.</p>
     <div class="recenze">

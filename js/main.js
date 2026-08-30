@@ -79,3 +79,12 @@ document.addEventListener('keydown', e => {
   prepni();
   window.addEventListener('scroll', prepni, { passive: true });
 })();
+
+// Kdyby si někdo rozšířil okno s otevřeným menu, zůstalo by viset otevřené
+// a hamburger, kterým se zavírá, by v liště už nebyl. Zavíráme ho tedy sami.
+(() => {
+  const liste = window.matchMedia('(min-width: 1600px)');
+  const zavriVListe = (e) => { if (e.matches) toggle(false); };
+  liste.addEventListener('change', zavriVListe);
+  zavriVListe(liste);
+})();
