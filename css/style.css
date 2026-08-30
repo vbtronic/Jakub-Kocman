@@ -434,3 +434,12 @@ section{padding:104px 0}
 
 /* LinkedIn – ikona má sedět na účaří s textem tlačítka */
 .btn-li svg{flex:none}
+
+/* Odkaz na LinkedIn pod časovou osou */
+.zivotopis{margin-top:30px;font-size:15px;color:var(--slate)}
+.zivotopis a{
+  display:inline-flex;align-items:center;gap:7px;font-weight:600;color:var(--green-700);
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.zivotopis a:hover{border-bottom-color:var(--green-500)}
+.zivotopis svg{flex:none}
