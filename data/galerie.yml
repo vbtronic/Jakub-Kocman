@@ -1,5 +1,3 @@
-# Fotky v galerii. Pořadí v tomto souboru = pořadí na webu.
-# Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.
 fotky:
   - soubor: /img/g/20230713_151943.webp
     nahled: /img/t/20230713_151943.webp
@@ -407,7 +405,7 @@ fotky:
     uvod: false
   - soubor: /img/g/IMG_0361.webp
     nahled: /img/t/IMG_0361.webp
-    popis: ""
+    popis: Přidání zásuvky na router. Praha
     uvod: false
   - soubor: /img/g/IMG_0514.webp
     nahled: /img/t/IMG_0514.webp
