@@ -72,3 +72,10 @@ document.addEventListener('keydown', e => {
 
   bloky.forEach(el => pozorovatel.observe(el));
 })();
+
+// Stín hlavičky až po odscrollování – nahoře stránky působí rušivě.
+(() => {
+  const prepni = () => document.body.classList.toggle('scrolled', window.scrollY > 8);
+  prepni();
+  window.addEventListener('scroll', prepni, { passive: true });
+})();
