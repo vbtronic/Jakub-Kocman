@@ -478,30 +478,6 @@ section{padding:104px 0}
 
 
 /* ---------- MENU ---------- */
-/* Dvě samostatná menu, ne jedno přepínané:
-   .nav     — celoobrazovkový překryv, leží MIMO hlavičku, protože
-              backdrop-filter hlavičky by mu rozbil position:fixed
-   .nav-pc  — řádek odkazů v liště, jen na velkém monitoru; na notebooku
-              i mobilu se používá hamburger
-   Odkazy v obou hlídá build (scripts/build.mjs), aby se nerozešly. */
-.nav-pc{display:none}
-
-@media(min-width:1600px){
-  .burger{display:none}
-  /* Zásadní: překryv musí být v liště zhasnutý natvrdo. Jinak by zůstal
-     otevřený, kdyby si někdo rozšířil okno s otevřeným menu — a hamburger,
-     kterým by ho zavřel, už by tam nebyl. */
-  .nav{display:none!important}
-  .nav-pc{display:block}
-  .nav-pc ul{display:flex;align-items:center;gap:22px;list-style:none}
-  .nav-pc a{
-    font-size:14.5px;font-weight:600;color:var(--ink);white-space:nowrap;
-    padding:6px 0;border-bottom:2px solid transparent;transition:.2s;
-  }
-  .nav-pc a:hover{color:var(--green-700);border-bottom-color:var(--green-500)}
-  .bar-right{gap:26px}
-}
-@media(min-width:1600px) and (max-width:1760px){
-  .nav-pc ul{gap:16px}
-  .tel-link{display:none}
-}
+/* Jediné menu na všech šířkách: hamburger a celoobrazovkový překryv.
+   Překryv leží MIMO hlavičku — backdrop-filter hlavičky by mu rozbil
+   position:fixed a smrsknul ho do výšky lišty. */
