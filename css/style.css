@@ -66,9 +66,16 @@ header{
 }
 .burger:hover{border-color:var(--green-500)}
 .burger i{display:block;width:100%;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+/* Prostřední čárka se schovává průhledností i smrsknutím na nulovou šířku.
+   Samotná průhlednost na iOS spolehlivě nestačí – konce čárky prosvítaly
+   po stranách křížku. Se scaleX(0) nemá co vykreslit, ať se opacity chová
+   jakkoli. */
 body.nav-open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
-body.nav-open .burger i:nth-child(2){opacity:0}
+body.nav-open .burger i:nth-child(2){opacity:0;transform:scaleX(0)}
 body.nav-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Ramena křížku o kus delší, ať ikona v tlačítku nepůsobí drobně */
+body.nav-open .burger i:nth-child(1),
+body.nav-open .burger i:nth-child(3){width:26px}
 
 /* ---------- OVERLAY NAV ---------- */
 /* Překryv se přizpůsobuje výšce okna – s osmi položkami je právě výška
