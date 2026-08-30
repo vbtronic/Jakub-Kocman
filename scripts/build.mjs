@@ -5,6 +5,7 @@
 // Spuštění: npm run build
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
@@ -154,6 +155,24 @@ ${recenze.map(r => `      <figure class="recenze-karta">
 </section>
 `;
 
+// ------------------------------------------------------- verze stylů a skriptů
+// Prohlížeč si CSS a JS drží v mezipaměti. Bez tohohle by po úpravě vzhledu
+// viděl návštěvník nové HTML se starým stylem – a rozbité stránky.
+// Za adresu se proto lepí otisk obsahu; jakmile se soubor změní, změní se
+// i adresa a prohlížeč si ho stáhne znovu.
+const otisk = (soubor) => crypto
+  .createHash('sha1')
+  .update(fs.readFileSync(path.join(ROOT, soubor)))
+  .digest('hex')
+  .slice(0, 8);
+
+const verzeCss = otisk('css/style.css');
+const verzeJs = otisk('js/main.js');
+
+const oznacVerze = (html) => html
+  .replace(/href="css\/style\.css(\?v=[a-f0-9]+)?"/g, `href="css/style.css?v=${verzeCss}"`)
+  .replace(/src="js\/main\.js(\?v=[a-f0-9]+)?"/g, `src="js/main.js?v=${verzeJs}"`);
+
 // ---------------------------------------------------------------- zápis HTML
 const pocet = String(fotky.length);
 const nahradPocet = h =>
@@ -167,11 +186,13 @@ index = vloz(index, 'vzdelani', skoly, 'index.html');
 index = vlozInline(index, 'zkusenosti-uvod', esc(zkusenosti.podnadpis || ''), 'index.html');
 index = vlozInline(index, 'recenze', sekceRecenzi, 'index.html');
 index = nahradPocet(index);
+index = oznacVerze(index);
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 let galerie = fs.readFileSync(path.join(ROOT, 'galerie.html'), 'utf8');
 galerie = vloz(galerie, 'galerie', vsechnyShoty, 'galerie.html');
 galerie = nahradPocet(galerie);
+galerie = oznacVerze(galerie);
 fs.writeFileSync(path.join(ROOT, 'galerie.html'), galerie);
 
 // ---------------------------------------------------------------- sitemap
@@ -217,4 +238,5 @@ Sitemap: ${BASE}/sitemap.xml
 
 console.log(`✓ ${fotky.length} fotek (${proUvod.length} na úvodní stránce), ${sluzby.length} služeb, ` +
   `${prace.length} pozic, ${recenze.length} recenzí, sitemap k ${DNES}`);
+console.log(`  verze stylů ${verzeCss}, skriptů ${verzeJs}`);
 if (!uvodni.length) console.log('  pozn.: žádná fotka není zaškrtnutá pro úvod, použito prvních šest');
