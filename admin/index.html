@@ -30,6 +30,22 @@
     return WEB + String(cesta).replace(/^\//, '');
   }
 
+  // Chyba v náhledu nesmí položit celou administraci — bez tohohle
+  // pojistky spadne Decap celý a nejde ani editovat.
+  function bezpecny(nazev, vykresli) {
+    return createClass({
+      render: function () {
+        try {
+          return vykresli(this.props);
+        } catch (e) {
+          if (window.console) console.error('Náhled "' + nazev + '" selhal:', e);
+          return h('p', { className: 'nah-prazdno' },
+            'Náhled se nepodařilo vykreslit. Editace funguje dál.');
+        }
+      }
+    });
+  }
+
   function seznam(entry, klic) {
     var v = entry.getIn(['data', klic]);
     if (!v) return [];
@@ -37,9 +53,7 @@
   }
 
   // ---------------------------------------------------------- galerie
-  var NahledGalerie = createClass({
-    render: function () {
-      var props = this.props;
+  var NahledGalerie = bezpecny('galerie', function (props) {
       var fotky = seznam(props.entry, 'fotky');
       if (!fotky.length) return h('p', { className: 'nah-prazdno' }, 'Zatím tu nejsou žádné fotky.');
 
@@ -61,13 +75,11 @@
           );
         }))
       );
-    }
   });
 
   // ---------------------------------------------------------- služby
-  var NahledSluzby = createClass({
-    render: function () {
-      var sluzby = seznam(this.props.entry, 'sluzby');
+  var NahledSluzby = bezpecny('služby', function (props) {
+      var sluzby = seznam(props.entry, 'sluzby');
       if (!sluzby.length) return h('p', { className: 'nah-prazdno' }, 'Zatím tu nejsou žádné služby.');
 
       return h('div', { className: 'nah' },
@@ -83,13 +95,11 @@
           );
         }))
       );
-    }
   });
 
   // ------------------------------------------------------ zkušenosti
-  var NahledZkusenosti = createClass({
-    render: function () {
-      var e = this.props.entry;
+  var NahledZkusenosti = bezpecny('zkušenosti', function (props) {
+      var e = props.entry;
       var prace = seznam(e, 'prace');
       var vzdelani = seznam(e, 'vzdelani');
 
@@ -107,7 +117,7 @@
             h('p', {}, z.popis || '')
           );
         })),
-        vzdelani.length ? h('div', { className: 'nah-karty', style: 'margin-top:20px' },
+        vzdelani.length ? h('div', { className: 'nah-karty nah-odsazeno' },
           vzdelani.map(function (v, i) {
             return h('div', { key: i, className: 'nah-karta' },
               h('h3', {}, v.nadpis || 'bez názvu'),
@@ -116,7 +126,6 @@
           })
         ) : null
       );
-    }
   });
 
   ['zkusenosti', 'kariera'].forEach(function (k) {
@@ -157,7 +166,8 @@
     '.nah-obdobi{display:block;font-size:11.5px;font-weight:600;color:#1d6b45;letter-spacing:.03em}',
     '.nah-prace strong{display:block;font-size:14.5px;margin-top:1px}',
     '.nah-pozice{display:block;font-size:12.5px;color:#5c6b6f;font-weight:500}',
-    '.nah-prace p{margin:4px 0 0;font-size:12.5px;color:#5c6b6f;line-height:1.45}'
+    '.nah-prace p{margin:4px 0 0;font-size:12.5px;color:#5c6b6f;line-height:1.45}',
+    '.nah-odsazeno{margin-top:20px}'
   ].join('\n'), { raw: true });
 })();
 </script>
