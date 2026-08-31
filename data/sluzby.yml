@@ -1,45 +1,37 @@
-# Služby a ceník zobrazený na úvodní stránce.
-# Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.
 sluzby:
   - nadpis: Kompletní elektroinstalace RD
-    popis: >-
-      Návrh a realizace rozvodů v novostavbách rodinných domů — od přípojky po
+    popis: Návrh a realizace rozvodů v novostavbách rodinných domů — od přípojky po
       zásuvky.
-    cena: Cena dle rozsahu
+    cena: Od 99 900 Kč
     ikona: dum
   - nadpis: Rekonstrukce bytů
-    popis: >-
-      Kompletní výměna zastaralých hliníkových rozvodů, nové okruhy, jističe a
+    popis: Kompletní výměna zastaralých hliníkových rozvodů, nové okruhy, jističe a
       zásuvky.
-    cena: Cena dle rozsahu
+    cena: Od 50 000 Kč
     ikona: klic
   - nadpis: Výměny rozvaděčů
-    popis: >-
-      Modernizace domovních rozvaděčů, doplnění proudových chráničů a
+    popis: Modernizace domovních rozvaděčů, doplnění proudových chráničů a
       přepěťových ochran.
-    cena: Cena dle rozsahu
+    cena: Od 25 000 Kč
     ikona: rozvadec
   - nadpis: Instalace osvětlení
-    popis: >-
-      Světla interiérová i venkovní, LED pásky, spínání, stmívání a chytré
+    popis: Světla interiérová i venkovní, LED pásky, spínání, stmívání a chytré
       ovládání.
-    cena: Cena dle rozsahu
+    cena: Od 350 Kč
     ikona: zarovka
   - nadpis: Odstraňování závad
     popis: Hledání a oprava poruch — vypadávající jističe, nefunkční okruhy, zkraty.
-    cena: Cena dle rozsahu
+    cena: Od 1 000 Kč
     ikona: vystraha
   - nadpis: Menší elektroopravy
-    popis: >-
-      Výměna zásuvek, vypínačů, přisvětlení, drobné zásahy — rychle a bez
-      čekání.
-    cena: Cena dle rozsahu
+    popis: Výměna zásuvek, vypínačů, přisvětlení, drobné zásahy — rychle a bez čekání.
+    cena: Od 250 Kč
     ikona: blesk
   - nadpis: Hodinový manžel
     popis: Drobné technické práce po domě i bytě — nábytek, police, kohoutky, údržba.
-    cena: Cena dle rozsahu
+    cena: 350 Kč/h
     ikona: klic
   - nadpis: Příprava na STK & pneuservis
     popis: Kontrola vozu před technickou, přezutí sada za sadu.
-    cena: Cena dle rozsahu
+    cena: STK od 3500 Kč a pneuservis od 500 Kč
     ikona: kolo
