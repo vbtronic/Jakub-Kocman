@@ -534,7 +534,9 @@ section{padding:104px 0}
 .viz-misto{font-size:13.5px;color:rgba(255,255,255,.62);margin-top:9px}
 
 /* ---- kontaktní tlačítka ---- */
-.viz-akce{display:grid;gap:10px;margin:-20px auto 0;position:relative;z-index:2}
+/* Bez přesahu do zeleného pruhu – překrývání dvou vrstev je zbytečně
+   křehké a horní okraj tlačítka se ořezával. */
+.viz-akce{display:grid;gap:10px;margin:24px auto 0}
 .viz-tlacitko{
   display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
   border-radius:16px;padding:15px 18px;box-shadow:var(--stin-2);transition:transform .2s,box-shadow .2s;
