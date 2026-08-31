@@ -500,3 +500,101 @@ section{padding:104px 0}
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
 @media(max-width:600px){ .shot-popis{font-size:12.5px;padding:22px 12px 10px} }
+
+/* ================= VIZITKA (cíl QR kódu z papírové vizitky) ================= */
+/* Samostatná stránka mimo menu. Navržená pro telefon v ruce: velké dotykové
+   plochy, kontakt hned nahoře, žádné dlouhé čtení. */
+.vizitka-body{background:var(--bg)}
+.viz-obal{max-width:520px;margin:0 auto;padding:0 20px}
+
+.viz-hlava{
+  background:linear-gradient(165deg,var(--green-900) 0%,#15523a 60%,var(--green-700) 100%);
+  color:#fff;padding:26px 0 32px;text-align:center;position:relative;overflow:hidden;
+}
+.viz-hlava::after{
+  content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;
+  background:radial-gradient(circle,rgba(47,158,99,.3),transparent 66%);pointer-events:none;
+}
+.viz-hlava .viz-obal{position:relative;z-index:1}
+.viz-znacka{
+  display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:22px;
+}
+.viz-znacka .bolt{
+  width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.14);
+  display:grid;place-items:center;color:#fff;
+}
+.viz-portret{
+  width:112px;height:112px;margin:0 auto 16px;border-radius:50%;overflow:hidden;
+  border:3px solid rgba(255,255,255,.28);box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+.viz-portret img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.vizitka h1{font-size:29px;font-weight:800;letter-spacing:-.02em;margin-bottom:7px}
+.viz-role{font-size:15.5px;color:rgba(255,255,255,.88);line-height:1.45}
+.viz-misto{font-size:13.5px;color:rgba(255,255,255,.62);margin-top:9px}
+
+/* ---- kontaktní tlačítka ---- */
+.viz-akce{display:grid;gap:10px;margin:-20px auto 0;position:relative;z-index:2}
+.viz-tlacitko{
+  display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:15px 18px;box-shadow:var(--stin-2);transition:transform .2s,box-shadow .2s;
+}
+.viz-tlacitko:hover{transform:translateY(-2px);box-shadow:var(--stin-3)}
+.viz-tlacitko svg{width:21px;height:21px;flex:none;color:var(--green-700)}
+.viz-tlacitko small{display:block;font-size:12.5px;color:var(--slate);margin-bottom:1px}
+.viz-tlacitko b{display:block;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.viz-hlavni{background:var(--green-900);border-color:var(--green-900)}
+.viz-hlavni svg{color:var(--green-500)}
+.viz-hlavni small{color:rgba(255,255,255,.66)}
+.viz-hlavni b{color:#fff;font-size:18px}
+
+/* ---- sekce ---- */
+.viz-sekce{margin-top:38px}
+.viz-sekce h2{
+  font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green-700);margin-bottom:14px;
+}
+.viz-sluzby{display:grid;gap:9px}
+.viz-sluzba{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 17px;
+  display:flex;gap:13px;align-items:flex-start;
+}
+.viz-sluzba .viz-ik{
+  width:34px;height:34px;border-radius:10px;background:var(--green-50);color:var(--green-700);
+  display:grid;place-items:center;flex:none;
+}
+.viz-sluzba .viz-ik svg{width:17px;height:17px}
+.viz-sluzba h3{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.viz-sluzba p{font-size:13.5px;color:var(--slate);line-height:1.5;margin-top:3px}
+.viz-sluzba .viz-cena{
+  display:inline-block;margin-top:8px;font-size:12px;font-weight:600;color:var(--green-700);
+  background:var(--green-50);padding:3px 10px;border-radius:99px;
+}
+.viz-pozn{margin-top:14px;font-size:13px;color:var(--slate);line-height:1.55}
+
+/* ---- odkazy ---- */
+.viz-odkazy{display:grid;gap:9px}
+.viz-odkaz{
+  display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:13px 16px;transition:border-color .2s,transform .2s;
+}
+.viz-odkaz:hover{border-color:var(--green-500);transform:translateX(3px)}
+.viz-ikona{
+  width:34px;height:34px;border-radius:10px;background:var(--bg);color:var(--green-700);
+  display:grid;place-items:center;flex:none;
+}
+.viz-ikona svg{width:18px;height:18px}
+.viz-odkaz b{display:block;font-size:15px;font-weight:600}
+.viz-odkaz small{display:block;font-size:12.5px;color:var(--slate);margin-top:1px}
+.viz-web{background:var(--green-50);border-color:rgba(47,158,99,.3)}
+
+.viz-pata{
+  margin-top:42px;padding:22px 0 34px;border-top:1px solid var(--line);
+  text-align:center;font-size:12.5px;color:var(--slate);line-height:1.7;
+}
+.viz-pata a{color:var(--green-700);font-weight:600}
+
+@media(min-width:560px){
+  .viz-hlava{padding:34px 0 40px}
+  .vizitka h1{font-size:33px}
+}

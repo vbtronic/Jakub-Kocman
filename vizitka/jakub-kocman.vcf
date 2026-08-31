@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Kocman;Jakub;;;
+FN:Jakub Kocman
+ORG:KM-Elektro
+TITLE:Elektroinstalace
+TEL;TYPE=CELL,VOICE:+420739108099
+EMAIL;TYPE=INTERNET,WORK:km-elektro@email.cz
+URL:https://jakubkocman.cz
+ADR;TYPE=WORK:;;;Hoštka;;;CZ
+NOTE:Elektroinstalace rodinných domů a bytů. Litoměřicko, po domluvě celá ČR.
+END:VCARD

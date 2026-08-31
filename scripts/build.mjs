@@ -170,8 +170,10 @@ const verzeCss = otisk('css/style.css');
 const verzeJs = otisk('js/main.js');
 
 const oznacVerze = (html) => html
-  .replace(/href="css\/style\.css(\?v=[a-f0-9]+)?"/g, `href="css/style.css?v=${verzeCss}"`)
-  .replace(/src="js\/main\.js(\?v=[a-f0-9]+)?"/g, `src="js/main.js?v=${verzeJs}"`);
+  .replace(/href="((?:\.\.\/)?)css\/style\.css(\?v=[a-f0-9]+)?"/g,
+    (_, pred) => `href="${pred}css/style.css?v=${verzeCss}"`)
+  .replace(/src="((?:\.\.\/)?)js\/main\.js(\?v=[a-f0-9]+)?"/g,
+    (_, pred) => `src="${pred}js/main.js?v=${verzeJs}"`);
 
 // ---------------------------------------------------------------- zápis HTML
 const pocet = String(fotky.length);
@@ -188,6 +190,26 @@ index = vlozInline(index, 'recenze', sekceRecenzi, 'index.html');
 index = nahradPocet(index);
 index = oznacVerze(index);
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
+
+// ---------------------------------------------------------------- vizitka
+// Cíl QR kódu z papírové vizitky. Služby bere ze stejných dat jako web,
+// takže když Jakub upraví ceník, změní se i tady.
+const sluzbyNaVizitku = sluzby.map(s => `        <div class="viz-sluzba">
+          <span class="viz-ik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${IKONY[s.ikona] || IKONY.blesk}</svg></span>
+          <div>
+            <h3>${esc(s.nadpis)}</h3>
+            <p>${esc(s.popis)}</p>
+            <span class="viz-cena">${esc(s.cena)}</span>
+          </div>
+        </div>`).join('\n');
+
+const cestaVizitka = path.join(ROOT, 'vizitka', 'index.html');
+if (fs.existsSync(cestaVizitka)) {
+  let vizitka = fs.readFileSync(cestaVizitka, 'utf8');
+  vizitka = vloz(vizitka, 'vizitka-sluzby', sluzbyNaVizitku, 'vizitka/index.html');
+  vizitka = oznacVerze(vizitka);
+  fs.writeFileSync(cestaVizitka, vizitka);
+}
 
 let galerie = fs.readFileSync(path.join(ROOT, 'galerie.html'), 'utf8');
 galerie = vloz(galerie, 'galerie', vsechnyShoty, 'galerie.html');
