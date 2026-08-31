@@ -48,6 +48,32 @@ function vlozInline(html, klic, obsah, kdeProChybu) {
   return html.replace(re, `$1${obsah}$2`);
 }
 
+/**
+ * Hlídá, že položky v menu jdou ve stejném pořadí jako sekce na stránce.
+ * Bez toho se to tiše rozejde, jakmile někdo přidá sekci jinam, než čekal —
+ * a návštěvník pak v menu skáče po stránce nahoru a dolů.
+ */
+function zkontrolujPoradiMenu(html, kde) {
+  const sekce = [...html.matchAll(/<section[^>]*id="([^"]+)"/g)].map(m => '#' + m[1]);
+  const nav = html.match(/<nav class="nav" id="nav"[^>]*>([\s\S]*?)<\/ul>/);
+  if (!nav) throw new Error(`V ${kde} chybí menu`);
+  const polozky = [...nav[1].matchAll(/<li><a href="([^"]+)">([^<]+)<\/a>/g)]
+    .map(m => ({ cil: m[1], text: m[2] }))
+    .filter(p => p.cil.startsWith('#'));
+
+  let posledni = -1, poslednText = '';
+  for (const { cil, text } of polozky) {
+    const kdeJe = sekce.indexOf(cil);
+    if (kdeJe === -1) throw new Error(`Menu v ${kde} odkazuje na ${cil}, ale ta sekce na stránce není`);
+    if (kdeJe <= posledni) {
+      throw new Error(
+        `Menu v ${kde} neodpovídá pořadí na stránce:\n` +
+        `  "${text}" (${kdeJe + 1}. sekce) je v menu až za "${poslednText}" (${posledni + 1}. sekce)`);
+    }
+    posledni = kdeJe; poslednText = text;
+  }
+}
+
 // ---------------------------------------------------------------- galerie
 const { fotky = [] } = nactiYaml('galerie.yml');
 if (!fotky.length) throw new Error('data/galerie.yml neobsahuje žádné fotky');
@@ -189,6 +215,7 @@ index = vlozInline(index, 'zkusenosti-uvod', esc(zkusenosti.podnadpis || ''), 'i
 index = vlozInline(index, 'recenze', sekceRecenzi, 'index.html');
 index = nahradPocet(index);
 index = oznacVerze(index);
+zkontrolujPoradiMenu(index, 'index.html');
 fs.writeFileSync(path.join(ROOT, 'index.html'), index);
 
 // ---------------------------------------------------------------- vizitka
