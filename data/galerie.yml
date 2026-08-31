@@ -1,263 +1,199 @@
 fotky:
   - soubor: /img/g/20230713_151943.webp
     nahled: /img/t/20230713_151943.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: true
   - soubor: /img/g/20230810_090631.webp
     nahled: /img/t/20230810_090631.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: true
   - soubor: /img/g/20221028_133956.webp
     nahled: /img/t/20221028_133956.webp
-    popis: ""
-    uvod: true
+    popis: Zapojení rozvaděče, Hamburg. Německo
+    uvod: false
   - soubor: /img/g/20220224_145342.webp
     nahled: /img/t/20220224_145342.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: true
   - soubor: /img/g/20220224_145406.webp
     nahled: /img/t/20220224_145406.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: true
   - soubor: /img/g/IMG_0358.webp
     nahled: /img/t/IMG_0358.webp
-    popis: ""
-    uvod: true
-  - soubor: /img/g/20210220_161349.webp
-    nahled: /img/t/20210220_161349.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210220_161354.webp
-    nahled: /img/t/20210220_161354.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210220_161358.webp
-    nahled: /img/t/20210220_161358.webp
-    popis: ""
+    popis: Přidání zásuvky na router. Praha
     uvod: false
   - soubor: /img/g/20210220_161410.webp
     nahled: /img/t/20210220_161410.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210721_164223.webp
-    nahled: /img/t/20210721_164223.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210721_164233.webp
-    nahled: /img/t/20210721_164233.webp
-    popis: ""
+    popis: Zapojení elektromotoru. Hoštka
     uvod: false
   - soubor: /img/g/20210721_164242.webp
     nahled: /img/t/20210721_164242.webp
-    popis: ""
+    popis: Zapojení nabíječky na elektroauta. Hradec Králové
     uvod: false
   - soubor: /img/g/20210728_144300.webp
     nahled: /img/t/20210728_144300.webp
-    popis: ""
+    popis: Realizace tras, Mondi. Štětí
     uvod: false
   - soubor: /img/g/20210728_144307.webp
     nahled: /img/t/20210728_144307.webp
-    popis: ""
+    popis: Realizace tras, Mondi. Štětí
     uvod: false
   - soubor: /img/g/20210728_144313.webp
     nahled: /img/t/20210728_144313.webp
-    popis: ""
+    popis: Realizace tras, Mondi. Štětí
     uvod: false
   - soubor: /img/g/20210819_084602.webp
     nahled: /img/t/20210819_084602.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210827_141408.webp
-    nahled: /img/t/20210827_141408.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210827_141411.webp
-    nahled: /img/t/20210827_141411.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20210827_141419.webp
-    nahled: /img/t/20210827_141419.webp
-    popis: ""
+    popis: Zapojení motorů, Mondi. Štětí
     uvod: false
   - soubor: /img/g/20211021_155654.webp
     nahled: /img/t/20211021_155654.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20211021_155700.webp
-    nahled: /img/t/20211021_155700.webp
-    popis: ""
+    popis: Výměna řemenu cirkulárky. Hoštka
     uvod: false
   - soubor: /img/g/20220224_145314.webp
     nahled: /img/t/20220224_145314.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220224_145344.webp
     nahled: /img/t/20220224_145344.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220224_145356.webp
     nahled: /img/t/20220224_145356.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220224_145358.webp
     nahled: /img/t/20220224_145358.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220224_145403.webp
     nahled: /img/t/20220224_145403.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220224_145423.webp
     nahled: /img/t/20220224_145423.webp
-    popis: ""
+    popis: Rekonstrukce rozvodny VVN. Český brod
     uvod: false
   - soubor: /img/g/20220306_123509.webp
     nahled: /img/t/20220306_123509.webp
-    popis: ""
+    popis: Výměna vypínače. Děčín
     uvod: false
   - soubor: /img/g/20220306_123517.webp
     nahled: /img/t/20220306_123517.webp
-    popis: ""
+    popis: Výměna vypínače. Děčín
     uvod: false
   - soubor: /img/g/20221028_133959.webp
     nahled: /img/t/20221028_133959.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: false
   - soubor: /img/g/20230713_151923.webp
     nahled: /img/t/20230713_151923.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20230713_151931.webp
-    nahled: /img/t/20230713_151931.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: false
   - soubor: /img/g/20230713_151946.webp
     nahled: /img/t/20230713_151946.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: false
   - soubor: /img/g/20230810_090642.webp
     nahled: /img/t/20230810_090642.webp
-    popis: ""
+    popis: Zapojení rozvaděče, Hamburg. Německo
     uvod: false
   - soubor: /img/g/20240126_162937.webp
     nahled: /img/t/20240126_162937.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240126_162949.webp
     nahled: /img/t/20240126_162949.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240126_163314.webp
     nahled: /img/t/20240126_163314.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240126_163326.webp
     nahled: /img/t/20240126_163326.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240126_163331.webp
     nahled: /img/t/20240126_163331.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240223_163213.webp
     nahled: /img/t/20240223_163213.webp
-    popis: ""
+    popis: Renovace traktoru Zetor. Hoštka
     uvod: false
   - soubor: /img/g/20240223_163228.webp
     nahled: /img/t/20240223_163228.webp
-    popis: ""
+    popis: Renovace traktoru Zetor. Hoštka
     uvod: false
   - soubor: /img/g/20240224_172808.webp
     nahled: /img/t/20240224_172808.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240224_172813.webp
     nahled: /img/t/20240224_172813.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240224_172821.webp
     nahled: /img/t/20240224_172821.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240224_172839.webp
     nahled: /img/t/20240224_172839.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240224_172904.webp
     nahled: /img/t/20240224_172904.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240412_124303.webp
     nahled: /img/t/20240412_124303.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, před. Hoštka
     uvod: false
   - soubor: /img/g/20240413_113416.webp
     nahled: /img/t/20240413_113416.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, po. Hoštka
     uvod: false
   - soubor: /img/g/20240425_210512.webp
     nahled: /img/t/20240425_210512.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, po. Hoštka
     uvod: false
   - soubor: /img/g/20240427_181939.webp
     nahled: /img/t/20240427_181939.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, po. Hoštka
     uvod: false
   - soubor: /img/g/20240427_181944.webp
     nahled: /img/t/20240427_181944.webp
-    popis: ""
+    popis: Generálka motoru, Octavia1, po. Hoštka
     uvod: false
   - soubor: /img/g/20240626_163129.webp
     nahled: /img/t/20240626_163129.webp
-    popis: ""
+    popis: Výměna kabelů k cívce a cívky, FocusMk1. Hoštka
     uvod: false
   - soubor: /img/g/20240626_163135.webp
     nahled: /img/t/20240626_163135.webp
-    popis: ""
+    popis: Výměna kabelů k cívce a cívky, FocusMk1. Hoštka
     uvod: false
   - soubor: /img/g/20240628_163734.webp
     nahled: /img/t/20240628_163734.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20240819_130102.webp
-    nahled: /img/t/20240819_130102.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20240819_130120.webp
-    nahled: /img/t/20240819_130120.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20250706_121126.webp
-    nahled: /img/t/20250706_121126.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20250706_121134.webp
-    nahled: /img/t/20250706_121134.webp
-    popis: ""
+    popis: Výměna kabelů k cívce a cívky, FocusMk1. Hoštka
     uvod: false
   - soubor: /img/g/20250713_192910.webp
     nahled: /img/t/20250713_192910.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, před. Česko
     uvod: false
   - soubor: /img/g/20250713_192919.webp
     nahled: /img/t/20250713_192919.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, před. Česko
     uvod: false
   - soubor: /img/g/20250713_192933.webp
     nahled: /img/t/20250713_192933.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, před. Česko
     uvod: false
   - soubor: /img/g/20250713_192938.webp
     nahled: /img/t/20250713_192938.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20250919_113411.webp
-    nahled: /img/t/20250919_113411.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20250919_113438.webp
-    nahled: /img/t/20250919_113438.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, před. Česko
     uvod: false
   - soubor: /img/g/20251016_072933.webp
     nahled: /img/t/20251016_072933.webp
@@ -265,149 +201,125 @@ fotky:
     uvod: false
   - soubor: /img/g/20251016_072946.webp
     nahled: /img/t/20251016_072946.webp
-    popis: ""
+    popis: Pájení konektoru na telefon ve vlaku. Lovosice
     uvod: false
   - soubor: /img/g/20251016_073029.webp
     nahled: /img/t/20251016_073029.webp
-    popis: ""
+    popis: Pájení konektoru na telefon ve vlaku. Lovosice
     uvod: false
   - soubor: /img/g/20251017_090006.webp
     nahled: /img/t/20251017_090006.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260202_155704.webp
-    nahled: /img/t/20260202_155704.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260206_185920.webp
-    nahled: /img/t/20260206_185920.webp
-    popis: ""
+    popis: Pájení konektoru na telefon ve vlaku. Lovosice
     uvod: false
   - soubor: /img/g/20260215_161901.webp
     nahled: /img/t/20260215_161901.webp
-    popis: ""
+    popis: Přidání rámečku vypínače. Litoměřice
     uvod: false
   - soubor: /img/g/20260215_161913.webp
     nahled: /img/t/20260215_161913.webp
-    popis: ""
+    popis: Přidání rámečku vypínače. Litoměřice
     uvod: false
   - soubor: /img/g/20260424_181642.webp
     nahled: /img/t/20260424_181642.webp
-    popis: ""
-    uvod: false
+    popis: Výměna kol, Fabia2. Hoštka
+    uvod: true
   - soubor: /img/g/20260429_184601.webp
     nahled: /img/t/20260429_184601.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260429_184629.webp
-    nahled: /img/t/20260429_184629.webp
-    popis: ""
+    popis: Výměna svítidla. Horní počaply
     uvod: false
   - soubor: /img/g/20260429_184722.webp
     nahled: /img/t/20260429_184722.webp
-    popis: ""
+    popis: Výměna svítidla. Horní počaply
     uvod: false
   - soubor: /img/g/20260503_152552.webp
     nahled: /img/t/20260503_152552.webp
-    popis: ""
+    popis: Výměna zrcátka, Fabia1. Litoměřice
     uvod: false
   - soubor: /img/g/20260503_152759.webp
     nahled: /img/t/20260503_152759.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260607_160859.webp
-    nahled: /img/t/20260607_160859.webp
-    popis: ""
+    popis: Výměna zrcátka, Fabia1. Litoměřice
     uvod: false
   - soubor: /img/g/20260607_163216.webp
     nahled: /img/t/20260607_163216.webp
-    popis: ""
+    popis: Výměna nádoby na brzdovou kapalinu, Zetor, před. Hoštka
     uvod: false
   - soubor: /img/g/20260609_165657.webp
     nahled: /img/t/20260609_165657.webp
-    popis: ""
+    popis: Výměna nádoby na brzdovou kapalinu, Zetor, po. Hoštka
     uvod: false
   - soubor: /img/g/20260701_182801.webp
     nahled: /img/t/20260701_182801.webp
-    popis: ""
+    popis: Výměna vzduchového filtru,Fabia2.
     uvod: false
   - soubor: /img/g/20260701_184017.webp
     nahled: /img/t/20260701_184017.webp
-    popis: ""
+    popis: Čištění motoru auta, před. Hoštka
     uvod: false
   - soubor: /img/g/20260701_184542.webp
     nahled: /img/t/20260701_184542.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260701_184547.webp
-    nahled: /img/t/20260701_184547.webp
-    popis: ""
+    popis: Výměna kabinového filtru,Fabia2. Hoštka
     uvod: false
   - soubor: /img/g/20260712_140928.webp
     nahled: /img/t/20260712_140928.webp
-    popis: ""
+    popis: Čištění motoru auta, po. Hoštka
     uvod: false
   - soubor: /img/g/20260712_143452.webp
     nahled: /img/t/20260712_143452.webp
-    popis: ""
+    popis: Čištění interiéru auta, před. Hoštka
     uvod: false
   - soubor: /img/g/20260712_143502.webp
     nahled: /img/t/20260712_143502.webp
-    popis: ""
+    popis: Čištění interiéru auta, před. Hoštka
     uvod: false
   - soubor: /img/g/20260712_171558.webp
     nahled: /img/t/20260712_171558.webp
-    popis: ""
+    popis: Čištění interiéru auta, po. Hoštka
     uvod: false
   - soubor: /img/g/20260712_171604.webp
     nahled: /img/t/20260712_171604.webp
-    popis: ""
+    popis: Čištění interiéru auta, po. Hoštka
     uvod: false
   - soubor: /img/g/20260715_164519.webp
     nahled: /img/t/20260715_164519.webp
-    popis: ""
+    popis: Výměna držáku sprchy. Česko
     uvod: false
   - soubor: /img/g/20260715_181931.webp
     nahled: /img/t/20260715_181931.webp
-    popis: ""
-    uvod: false
-  - soubor: /img/g/20260718_195226.webp
-    nahled: /img/t/20260718_195226.webp
-    popis: ""
+    popis: Věšení zrcadla. Česko
     uvod: false
   - soubor: /img/g/20260720_173127.webp
     nahled: /img/t/20260720_173127.webp
-    popis: ""
+    popis: Tepování sedačky, před. Česko
     uvod: false
   - soubor: /img/g/20260720_173132.webp
     nahled: /img/t/20260720_173132.webp
-    popis: ""
+    popis: Tepování sedačky, před. Česko
     uvod: false
   - soubor: /img/g/20260724_185604.webp
     nahled: /img/t/20260724_185604.webp
-    popis: ""
+    popis: Výměna krytky zásuvky. Česko
     uvod: false
   - soubor: /img/g/20260725_174142.webp
     nahled: /img/t/20260725_174142.webp
-    popis: ""
+    popis: Výměna stahovačky, Octavia 1. Hoštka
     uvod: false
   - soubor: /img/g/IMG_0002.webp
     nahled: /img/t/IMG_0002.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, po. Česko
     uvod: false
   - soubor: /img/g/IMG_0004.webp
     nahled: /img/t/IMG_0004.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, po. Česko
     uvod: false
   - soubor: /img/g/IMG_0005.webp
     nahled: /img/t/IMG_0005.webp
-    popis: ""
+    popis: Rekonstrukce pokoje, po. Česko
     uvod: false
   - soubor: /img/g/IMG_0361.webp
     nahled: /img/t/IMG_0361.webp
     popis: Přidání zásuvky na router. Praha
-    uvod: false
+    uvod: true
   - soubor: /img/g/IMG_0514.webp
     nahled: /img/t/IMG_0514.webp
-    popis: ""
+    popis: Výměna vypínače na lampičce. Praha
     uvod: false
