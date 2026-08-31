@@ -590,9 +590,12 @@ section{padding:104px 0}
 .viz-odkaz small{display:block;font-size:12.5px;color:var(--slate);margin-top:1px}
 .viz-web{background:var(--green-50);border-color:rgba(47,158,99,.3)}
 
+/* Přebíjí celostránkové pravidlo pro footer – to má tmavé pozadí, které
+   uvnitř úzkého sloupce vizitky vypadalo jako plovoucí obdélník. */
 .viz-pata{
-  margin-top:42px;padding:22px 0 34px;border-top:1px solid var(--line);
-  text-align:center;font-size:12.5px;color:var(--slate);line-height:1.7;
+  background:none;margin-top:42px;padding:22px 0 34px;
+  border-top:1px solid var(--line);text-align:center;
+  font-size:12.5px;color:var(--slate);line-height:1.7;
 }
 .viz-pata a{color:var(--green-700);font-weight:600}
 
