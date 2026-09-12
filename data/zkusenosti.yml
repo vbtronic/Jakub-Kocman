@@ -1,24 +1,19 @@
-# Pracovní zkušenosti a vzdělání na úvodní stránce.
-# Spravuje se přes administraci na /admin/ — ručně sem psát nemusíš.
 podnadpis: Sedm let na stavbách, v průmyslu i u projekce — v Česku i v Německu.
 prace:
   - obdobi: 12/2025 – současnost
     firma: 2JCP a.s.
     pozice: Elektroinženýr
-    popis: >-
-      Modelování v Inventor Professional + Vault, 3D návrhy podle požadavků
+    popis: Modelování v Inventor Professional + Vault, 3D návrhy podle požadavků
       zákazníka, čtení schémat zapojení a modelování kabeláže.
   - obdobi: "2025"
     firma: Equans Services a.s.
     pozice: Elektromontér
-    popis: >-
-      Realizace zemnicích tras, zapojování rozvaděčů podle schémat, celková
+    popis: Realizace zemnicích tras, zapojování rozvaděčů podle schémat, celková
       rekonstrukce rozvodny VN a VVN.
   - obdobi: 2022 – 2024
     firma: Elmontia a.s. — zakázky v Německu
     pozice: Elektro dělník
-    popis: >-
-      Zapojování rozvaděčů podle schématu, instalace tras, zapojování světel a
+    popis: Zapojování rozvaděčů podle schématu, instalace tras, zapojování světel a
       umísťování kabelů do kabelových ras.
   - obdobi: 2021 – 2022
     firma: Mondi Štětí a.s.
@@ -27,8 +22,7 @@ prace:
   - obdobi: 2018 – 2021
     firma: Com-Pakt Energy a.s.
     pozice: Elektro dělník
-    popis: >-
-      Umísťování kabelů, zapojování zásuvek a vypínačů, zemnicí trasy, celková
+    popis: Umísťování kabelů, zapojování zásuvek a vypínačů, zemnicí trasy, celková
       rekonstrukce trafostanice.
 vzdelani:
   - nadpis: ČVUT v Praze, FEL
@@ -38,7 +32,9 @@ vzdelani:
     popis: Střední průmyslová škola, 2018–2022
     ikona: kniha
   - nadpis: Vedoucí elektrotechnik §7
-    popis: >-
-      Osoba znalá pro řízení činnosti dle § 7 NV č. 194/2022 Sb. (zákon č.
+    popis: Osoba znalá pro řízení činnosti dle § 7 NV č. 194/2022 Sb. (zákon č.
       250/2021 Sb.).
     ikona: stit
+  - ikona: cepice
+    nadpis: UJEP, Fakulta strojního inženýrství
+    popis: Průmyslová energetika, 2026-současnost
