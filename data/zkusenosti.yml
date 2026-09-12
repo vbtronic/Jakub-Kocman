@@ -25,6 +25,9 @@ prace:
     popis: Umísťování kabelů, zapojování zásuvek a vypínačů, zemnicí trasy, celková
       rekonstrukce trafostanice.
 vzdelani:
+  - ikona: cepice
+    nadpis: UJEP, Fakulta strojního inženýrství
+    popis: Průmyslová energetika, 2026-současnost
   - nadpis: ČVUT v Praze, FEL
     popis: Elektrotechnika, energetika a management (EEM), 2022–2025
     ikona: cepice
@@ -35,6 +38,3 @@ vzdelani:
     popis: Osoba znalá pro řízení činnosti dle § 7 NV č. 194/2022 Sb. (zákon č.
       250/2021 Sb.).
     ikona: stit
-  - ikona: cepice
-    nadpis: UJEP, Fakulta strojního inženýrství
-    popis: Průmyslová energetika, 2026-současnost
